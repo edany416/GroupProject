@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		D3E0CEE92278C626006AF3E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0CEE82278C626006AF3E6 /* AppDelegate.swift */; };
-		D3E0CEEB2278C626006AF3E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0CEEA2278C626006AF3E6 /* ViewController.swift */; };
 		D3E0CEEE2278C626006AF3E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3E0CEEC2278C626006AF3E6 /* Main.storyboard */; };
 		D3E0CEF02278C627006AF3E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E0CEEF2278C627006AF3E6 /* Assets.xcassets */; };
 		D3E0CEF32278C627006AF3E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3E0CEF12278C627006AF3E6 /* LaunchScreen.storyboard */; };
 		D3E0CEFE2278C627006AF3E6 /* RoomiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0CEFD2278C627006AF3E6 /* RoomiesTests.swift */; };
 		D3E0CF092278C627006AF3E6 /* RoomiesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0CF082278C627006AF3E6 /* RoomiesUITests.swift */; };
+		D3E0CF172278C8CF006AF3E6 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0CF162278C8CF006AF3E6 /* CircleButton.swift */; };
+		D3E0CF192278CE2C006AF3E6 /* UnderlineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0CF182278CE2C006AF3E6 /* UnderlineTextField.swift */; };
+		D3E0CF1E2278CFF3006AF3E6 /* LogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0CF1D2278CFF3006AF3E6 /* LogoViewController.swift */; };
+		D3E0CF202278D00D006AF3E6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0CF1F2278D00D006AF3E6 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,6 @@
 /* Begin PBXFileReference section */
 		D3E0CEE52278C625006AF3E6 /* Roomies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roomies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E0CEE82278C626006AF3E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D3E0CEEA2278C626006AF3E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D3E0CEED2278C626006AF3E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D3E0CEEF2278C627006AF3E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3E0CEF22278C627006AF3E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +49,10 @@
 		D3E0CF042278C627006AF3E6 /* RoomiesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoomiesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E0CF082278C627006AF3E6 /* RoomiesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomiesUITests.swift; sourceTree = "<group>"; };
 		D3E0CF0A2278C627006AF3E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3E0CF162278C8CF006AF3E6 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		D3E0CF182278CE2C006AF3E6 /* UnderlineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineTextField.swift; sourceTree = "<group>"; };
+		D3E0CF1D2278CFF3006AF3E6 /* LogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoViewController.swift; sourceTree = "<group>"; };
+		D3E0CF1F2278D00D006AF3E6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +103,10 @@
 		D3E0CEE72278C625006AF3E6 /* Roomies */ = {
 			isa = PBXGroup;
 			children = (
+				D3E0CF1C2278CEE3006AF3E6 /* Model */,
+				D3E0CF1B2278CEB6006AF3E6 /* Custom Views */,
+				D3E0CF1A2278CEAE006AF3E6 /* View Controllers */,
 				D3E0CEE82278C626006AF3E6 /* AppDelegate.swift */,
-				D3E0CEEA2278C626006AF3E6 /* ViewController.swift */,
 				D3E0CEEC2278C626006AF3E6 /* Main.storyboard */,
 				D3E0CEEF2278C627006AF3E6 /* Assets.xcassets */,
 				D3E0CEF12278C627006AF3E6 /* LaunchScreen.storyboard */,
@@ -123,6 +131,31 @@
 				D3E0CF0A2278C627006AF3E6 /* Info.plist */,
 			);
 			path = RoomiesUITests;
+			sourceTree = "<group>";
+		};
+		D3E0CF1A2278CEAE006AF3E6 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D3E0CF1D2278CFF3006AF3E6 /* LogoViewController.swift */,
+				D3E0CF1F2278D00D006AF3E6 /* SignUpViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		D3E0CF1B2278CEB6006AF3E6 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				D3E0CF162278C8CF006AF3E6 /* CircleButton.swift */,
+				D3E0CF182278CE2C006AF3E6 /* UnderlineTextField.swift */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		D3E0CF1C2278CEE3006AF3E6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +289,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3E0CEEB2278C626006AF3E6 /* ViewController.swift in Sources */,
+				D3E0CF172278C8CF006AF3E6 /* CircleButton.swift in Sources */,
+				D3E0CF192278CE2C006AF3E6 /* UnderlineTextField.swift in Sources */,
 				D3E0CEE92278C626006AF3E6 /* AppDelegate.swift in Sources */,
+				D3E0CF1E2278CFF3006AF3E6 /* LogoViewController.swift in Sources */,
+				D3E0CF202278D00D006AF3E6 /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +467,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZBZT8P75R5;
 				INFOPLIST_FILE = Roomies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -448,6 +485,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZBZT8P75R5;
 				INFOPLIST_FILE = Roomies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
