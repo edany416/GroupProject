@@ -1,7 +1,7 @@
 Group Project - README Template
 ===
 
-# TBD
+# Roomies
 
 ## Table of Contents
 1. [Overview](#Overview)
