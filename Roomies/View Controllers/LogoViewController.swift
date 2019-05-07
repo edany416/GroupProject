@@ -15,6 +15,13 @@ class LogoViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if FirebaseAPIManager.currentUser != nil {
+            performSegue(withIdentifier: "Log In Successful Segue", sender: nil)
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
