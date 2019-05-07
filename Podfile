@@ -9,6 +9,7 @@ target 'Roomies' do
     pod 'Firebase/Core'    
     pod 'Firebase/Auth'
     pod 'SkyFloatingLabelTextField', '~> 3.0'
+    pod 'NVActivityIndicatorView', '~> 3.0'
 
   target 'RoomiesTests' do
     inherit! :search_paths

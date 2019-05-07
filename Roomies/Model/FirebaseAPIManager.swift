@@ -53,4 +53,20 @@ struct FirebaseAPIManager {
             }
         }
     }
+    
+    static func signOut() {
+        if currentUser != nil {
+            do {
+                try Auth.auth().signOut()
+                let main = UIStoryboard(name: "Main", bundle: nil)
+                let logoViewController = main.instantiateViewController(withIdentifier: "LogoVC")
+                
+                let delegate = UIApplication.shared.delegate as! AppDelegate
+                delegate.window?.rootViewController = logoViewController
+                
+            } catch let error as NSError {
+                print("Error logging out \(error.localizedDescription)")
+            }
+        }
+    }
 }

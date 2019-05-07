@@ -59,11 +59,15 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - NVActivityIndicatorView (3.7.0):
+    - NVActivityIndicatorView/Presenter (= 3.7.0)
+  - NVActivityIndicatorView/Presenter (3.7.0)
   - SkyFloatingLabelTextField (3.6.0)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
+  - NVActivityIndicatorView (~> 3.0)
   - SkyFloatingLabelTextField (~> 3.0)
 
 SPEC REPOS:
@@ -78,6 +82,7 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMSessionFetcher
     - nanopb
+    - NVActivityIndicatorView
     - SkyFloatingLabelTextField
 
 SPEC CHECKSUMS:
@@ -91,8 +96,9 @@ SPEC CHECKSUMS:
   GoogleUtilities: 04fce34bcd5620c1ee76fb79172105c74a4df335
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  NVActivityIndicatorView: d3738df7e2e476aca0ba6bf32a8c9fbcfc33d64b
   SkyFloatingLabelTextField: 38164979b79512f9ff9288ad8acfc4bbf5d843e3
 
-PODFILE CHECKSUM: b9a3832232975d8b18974500768b589d3c6d5fb3
+PODFILE CHECKSUM: ac349fb48159a0e282cf87791a464c0e98a61149
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.6.1
