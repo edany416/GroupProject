@@ -35,8 +35,8 @@ Group Project - README Template
 
 * [x]User can create an account.
 * [x]User can log in to their account
+* [x]User can log out of their account
 * User can create a house for others to join.
-* User can log out of their account
 * User can request to join a house.
 * User can add a product to the shopping checklist
 * User can check off a product they purchsed
