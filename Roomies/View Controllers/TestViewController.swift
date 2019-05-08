@@ -15,7 +15,7 @@ class TestViewController: UIViewController {
     @IBOutlet weak var aView: NVActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        aView.type = .ballPulse
+        aView.type = .ballSpinFadeLoader
         // Do any additional setup after loading the view.
     }
     
