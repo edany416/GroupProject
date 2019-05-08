@@ -1,7 +1,7 @@
 Group Project - README Template
 ===
 
-# TBD
+# Roomies
 
 ## Table of Contents
 1. [Overview](#Overview)
@@ -35,8 +35,8 @@ Group Project - README Template
 
 * [x]User can create an account.
 * [x]User can log in to their account
+* [x]User can log out of their account
 * User can create a house for others to join.
-* User can log out of their account
 * User can request to join a house.
 * User can add a product to the shopping checklist
 * User can check off a product they purchsed
@@ -105,3 +105,6 @@ Group Project - README Template
     * (Create/POST) Create a new message
 * Settings Screen
     * (Create/POST) Create a new house
+    
+## GIF
+<img src='http://g.recordit.co/RwJBFnPoXK.gif' title='Milestone 1 Video Walkthrough' width='' alt='Milestone 1 Video Walkthrough' />
