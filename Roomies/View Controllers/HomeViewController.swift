@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func logoutTapped(_ sender: Any) {
-        FirebaseAPIManager.signOut()
+        
     }
     
     /*

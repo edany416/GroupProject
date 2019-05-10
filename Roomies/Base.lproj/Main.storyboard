@@ -190,9 +190,10 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abt-lr-1IA">
                                 <rect key="frame" x="137" y="426" width="101" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Logout"/>
+                                <state key="normal" title="To settings"/>
                                 <connections>
-                                    <action selector="logoutTapped:" destination="hlt-Ls-Cip" eventType="touchUpInside" id="W9c-CI-csX"/>
+                                    <action selector="logoutTapped:" destination="hlt-Ls-Cip" eventType="touchUpInside" id="oS9-df-c0Y"/>
+                                    <segue destination="E52-Y4-whK" kind="presentation" id="kdh-Ie-aVd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -203,6 +204,93 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o9q-BM-w4t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-146.40000000000001" y="1602.5487256371816"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="Tnp-Hs-han">
+            <objects>
+                <viewController id="E52-Y4-whK" customClass="SettingsViewController" customModule="Roomies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MgA-FA-XNF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIU-JH-yOE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kuD-PC-tlX">
+                                        <rect key="frame" x="60" y="80" width="255" height="173.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWO-4I-aTW">
+                                                <rect key="frame" x="0.0" y="0.0" width="255" height="77"/>
+                                                <color key="backgroundColor" red="0.49223918280000001" green="1" blue="0.20280473639999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Create"/>
+                                                <connections>
+                                                    <action selector="topButtonTapped:" destination="E52-Y4-whK" eventType="touchUpInside" id="DF0-R6-VCe"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mo3-zk-d6j">
+                                                <rect key="frame" x="0.0" y="97" width="255" height="76.5"/>
+                                                <color key="backgroundColor" red="0.37619439669999999" green="0.70034317779999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Join"/>
+                                                <connections>
+                                                    <action selector="bottomButtonTapped:" destination="E52-Y4-whK" eventType="touchUpInside" id="hXm-gx-cYg"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="kuD-PC-tlX" secondAttribute="bottom" constant="80" id="VYJ-y4-SaY"/>
+                                    <constraint firstItem="kuD-PC-tlX" firstAttribute="leading" secondItem="LIU-JH-yOE" secondAttribute="leading" constant="60" id="YXT-eo-KAj"/>
+                                    <constraint firstAttribute="trailing" secondItem="kuD-PC-tlX" secondAttribute="trailing" constant="60" id="u9l-Qv-yET"/>
+                                    <constraint firstItem="kuD-PC-tlX" firstAttribute="top" secondItem="LIU-JH-yOE" secondAttribute="top" constant="80" id="ut7-3S-h9y"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCo-r2-Bv4">
+                                <rect key="frame" x="50" y="567" width="275" height="50"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="bjV-qd-kIs"/>
+                                </constraints>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onLogout:" destination="E52-Y4-whK" eventType="touchUpInside" id="ez2-XQ-zYx"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HO8-W0-DHW">
+                                <rect key="frame" x="50" y="374" width="275" height="20.5"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="HO8-W0-DHW" firstAttribute="leading" secondItem="hek-9V-rtc" secondAttribute="leading" constant="50" id="0mL-Wu-W5O"/>
+                            <constraint firstItem="LIU-JH-yOE" firstAttribute="trailing" secondItem="hek-9V-rtc" secondAttribute="trailing" id="1P5-Tr-Lhh"/>
+                            <constraint firstItem="LIU-JH-yOE" firstAttribute="height" secondItem="MgA-FA-XNF" secondAttribute="height" multiplier="0.5" id="MSi-az-5Xj"/>
+                            <constraint firstItem="LIU-JH-yOE" firstAttribute="top" secondItem="MgA-FA-XNF" secondAttribute="top" id="O9g-8j-wSA"/>
+                            <constraint firstItem="HO8-W0-DHW" firstAttribute="top" secondItem="LIU-JH-yOE" secondAttribute="bottom" constant="40.5" id="Qky-Y7-7kd"/>
+                            <constraint firstItem="LIU-JH-yOE" firstAttribute="leading" secondItem="hek-9V-rtc" secondAttribute="leading" id="Tjr-Zd-PPK"/>
+                            <constraint firstItem="hek-9V-rtc" firstAttribute="bottom" secondItem="wCo-r2-Bv4" secondAttribute="bottom" constant="50" id="cyJ-Kq-H1v"/>
+                            <constraint firstItem="hek-9V-rtc" firstAttribute="trailing" secondItem="HO8-W0-DHW" secondAttribute="trailing" constant="50" id="eNh-Th-IKo"/>
+                            <constraint firstItem="hek-9V-rtc" firstAttribute="trailing" secondItem="wCo-r2-Bv4" secondAttribute="trailing" constant="50" id="vC3-qe-O4a"/>
+                            <constraint firstItem="wCo-r2-Bv4" firstAttribute="leading" secondItem="hek-9V-rtc" secondAttribute="leading" constant="50" id="wei-Pm-Y7G"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hek-9V-rtc"/>
+                    </view>
+                    <connections>
+                        <outlet property="bottomButton" destination="Mo3-zk-d6j" id="rx2-aD-WGM"/>
+                        <outlet property="houseIDLabel" destination="HO8-W0-DHW" id="3jX-Nt-HiK"/>
+                        <outlet property="topButton" destination="GWO-4I-aTW" id="TNT-yB-GRq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nJe-eB-NC5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="837.60000000000002" y="1597.1514242878561"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="Aor-YC-Phc">

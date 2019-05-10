@@ -32,7 +32,7 @@ struct FirebaseAPIManager {
                 changeRequest?.commitChanges(completion: { (error) in
                     if error == nil {
                         print("User name successfully changed")
-                        DBManager.instance.createDBUser(uid: FirebaseAPIManager.currentUser!.uid, userData: ["first name": firstName, "last name": lastName, "email": email, "password": password, "house":""])
+                        DBManager.instance.createDBUser(uid: FirebaseAPIManager.currentUser!.uid, userData: ["first name": firstName, "last name": lastName, "email": email, "password": password, "houseID":""])
                         completion(true) // At this point VC will call perform segue
                     } else {
                         print("Error changing user name \(error!.localizedDescription)")
