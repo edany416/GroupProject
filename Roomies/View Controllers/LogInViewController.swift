@@ -15,9 +15,12 @@ class LogInViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var passwordTextField: SkyFloatingLabelTextField!
-
+    @IBOutlet weak var logInButton: RoundedButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        logInButton.backgroundColor = UIColor.clear
         
         var textFieldProps = SFTextFieldProps()
         textFieldProps.lineColor = UIColor.white

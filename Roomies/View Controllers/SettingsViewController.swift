@@ -16,9 +16,12 @@ class SettingsViewController: UIViewController, MFMessageComposeViewControllerDe
     @IBOutlet weak var houseIDLabel: UILabel!
     @IBOutlet weak var sendHouseIDButton: UIButton!
     @IBOutlet weak var settingsNavigationItem: UINavigationItem!
+    @IBOutlet weak var logoutButton: RoundedButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        logoutButton.backgroundColor = UIColor.red
+        logoutButton.outlineColor = UIColor.red
         updateLayout()
     }
     

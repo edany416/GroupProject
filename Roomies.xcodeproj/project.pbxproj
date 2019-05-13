@@ -14,6 +14,8 @@
 		8C3E4A77227E752F00AD2AA8 /* SFTextFieldProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E4A76227E752F00AD2AA8 /* SFTextFieldProps.swift */; };
 		8C3E4A79227E760200AD2AA8 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E4A78227E760200AD2AA8 /* UnderlinedTextField.swift */; };
 		8C621EA22288EE53009DB88A /* AddItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C621EA12288EE53009DB88A /* AddItemController.swift */; };
+		8C621EA42289F20F009DB88A /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C621EA32289F20F009DB88A /* CheckBoxView.swift */; };
+		8C621EA6228A22CB009DB88A /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C621EA5228A22CB009DB88A /* RoundedButton.swift */; };
 		8C7E9C5B2288E31C00C0B554 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7E9C5A2288E31C00C0B554 /* ItemCell.swift */; };
 		8CC4B28022812A3D00D1760E /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC4B27F22812A3D00D1760E /* TestViewController.swift */; };
 		8CC4B2822281361700D1760E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC4B2812281361700D1760E /* HomeViewController.swift */; };
@@ -64,6 +66,8 @@
 		8C3E4A76227E752F00AD2AA8 /* SFTextFieldProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFTextFieldProps.swift; sourceTree = "<group>"; };
 		8C3E4A78227E760200AD2AA8 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		8C621EA12288EE53009DB88A /* AddItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemController.swift; sourceTree = "<group>"; };
+		8C621EA32289F20F009DB88A /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
+		8C621EA5228A22CB009DB88A /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		8C7E9C5A2288E31C00C0B554 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		8CC4B27F22812A3D00D1760E /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		8CC4B2812281361700D1760E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -221,6 +225,8 @@
 			children = (
 				8C7E9C5A2288E31C00C0B554 /* ItemCell.swift */,
 				8C621EA12288EE53009DB88A /* AddItemController.swift */,
+				8C621EA32289F20F009DB88A /* CheckBoxView.swift */,
+				8C621EA5228A22CB009DB88A /* RoundedButton.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -463,12 +469,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C1817B62278F12C00D71F67 /* LogInViewController.swift in Sources */,
+				8C621EA6228A22CB009DB88A /* RoundedButton.swift in Sources */,
 				D3E0CEE92278C626006AF3E6 /* AppDelegate.swift in Sources */,
 				B788160822850896001FA227 /* SettingsViewController.swift in Sources */,
 				8CC4B28022812A3D00D1760E /* TestViewController.swift in Sources */,
 				D3E0CF1E2278CFF3006AF3E6 /* LogoViewController.swift in Sources */,
 				8C3E4A79227E760200AD2AA8 /* UnderlinedTextField.swift in Sources */,
 				B788160622826EDD001FA227 /* DBManager.swift in Sources */,
+				8C621EA42289F20F009DB88A /* CheckBoxView.swift in Sources */,
 				8CC4B2822281361700D1760E /* HomeViewController.swift in Sources */,
 				8C7E9C5B2288E31C00C0B554 /* ItemCell.swift in Sources */,
 				D3E0CF202278D00D006AF3E6 /* SignUpViewController.swift in Sources */,

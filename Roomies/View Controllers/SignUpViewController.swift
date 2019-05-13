@@ -21,10 +21,12 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var loadingIndicatorView: NVActivityIndicatorView!
     
+    @IBOutlet weak var continueButton: RoundedButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        continueButton.backgroundColor = UIColor.clear
         loadingIndicatorView.type = .ballBeat
         
         var textFieldProps = SFTextFieldProps()

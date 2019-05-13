@@ -10,9 +10,14 @@ import UIKit
 
 class LogoViewController: UIViewController {
 
+    @IBOutlet weak var logInButton: RoundedButton!
+    @IBOutlet weak var signUpButton: RoundedButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        signUpButton.backgroundColor = UIColor.clear
+        logInButton.backgroundColor = UIColor.clear
+        
         // Do any additional setup after loading the view.
     }
     

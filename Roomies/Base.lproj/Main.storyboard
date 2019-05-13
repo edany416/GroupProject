@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Logo View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LogoVC" id="BYZ-38-t0r" customClass="ViewController" customModule="Roomies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogoVC" id="BYZ-38-t0r" customClass="LogoViewController" customModule="Roomies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,7 +25,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpB-NI-1w6">
                                 <rect key="frame" x="0.0" y="536" width="375" height="242"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAp-Pd-9jb">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAp-Pd-9jb" customClass="RoundedButton" customModule="Roomies" customModuleProvider="target">
                                         <rect key="frame" x="50" y="72" width="275" height="50"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -38,7 +38,7 @@
                                             <segue destination="xfG-FD-aAx" kind="presentation" id="dGz-ud-cCM"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIZ-Ci-9Bt">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIZ-Ci-9Bt" customClass="RoundedButton" customModule="Roomies" customModuleProvider="target">
                                         <rect key="frame" x="50" y="142" width="275" height="50"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -77,6 +77,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="logInButton" destination="qAp-Pd-9jb" id="s1r-Ff-DPX"/>
+                        <outlet property="signUpButton" destination="xIZ-Ci-9Bt" id="qhc-FY-cpH"/>
                         <segue destination="4pq-Eg-SUa" kind="presentation" identifier="SkipLoginSegue" id="kzn-6P-uXE"/>
                     </connections>
                 </viewController>
@@ -110,19 +112,19 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mfv-46-Hn3" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="50" y="91" width="275" height="30"/>
+                                        <rect key="frame" x="50" y="91" width="275" height="42.666666666666657"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xjW-6v-K2P" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="50" y="141" width="275" height="30"/>
+                                        <rect key="frame" x="50" y="153.66666666666666" width="275" height="43"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21I-TI-6io">
-                                        <rect key="frame" x="50" y="221" width="275" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21I-TI-6io" customClass="RoundedButton" customModule="Roomies" customModuleProvider="target">
+                                        <rect key="frame" x="50" y="246.66666666666663" width="275" height="50"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="MtR-tv-oBG"/>
@@ -164,6 +166,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="Mfv-46-Hn3" id="oBg-fh-nzr"/>
+                        <outlet property="logInButton" destination="21I-TI-6io" id="GpK-lK-FeK"/>
                         <outlet property="passwordTextField" destination="xjW-6v-K2P" id="0Rn-No-ErB"/>
                         <segue destination="4pq-Eg-SUa" kind="presentation" identifier="Log In Successful Segue" id="IjU-Y0-a5l"/>
                     </connections>
@@ -172,7 +175,7 @@
             </objects>
             <point key="canvasLocation" x="684" y="822"/>
         </scene>
-        <!--Shopping List-->
+        <!--Home View Controller-->
         <scene sceneID="DrK-AG-xqy">
             <objects>
                 <viewController storyboardIdentifier="HomeVC" id="hlt-Ls-Cip" customClass="HomeViewController" customModule="Roomies" customModuleProvider="target" sceneMemberID="viewController">
@@ -232,9 +235,20 @@
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSm-Yy-lx9">
                                 <rect key="frame" x="0.0" y="679" width="375" height="50"/>
-                                <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlusIcon" translatesAutoresizingMaskIntoConstraints="NO" id="s7f-8n-Klm">
+                                        <rect key="frame" x="172.66666666666666" y="10" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="BAb-5v-o2l"/>
+                                            <constraint firstAttribute="height" constant="30" id="Zry-36-EIq"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="3XY-Jp-mZb"/>
+                                    <constraint firstItem="s7f-8n-Klm" firstAttribute="centerX" secondItem="bSm-Yy-lx9" secondAttribute="centerX" id="JsM-sg-aVU"/>
+                                    <constraint firstItem="s7f-8n-Klm" firstAttribute="centerY" secondItem="bSm-Yy-lx9" secondAttribute="centerY" id="uF2-ib-gSp"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -250,7 +264,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hm9-xi-zYf"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Shopping List" id="0YO-Pg-hxh"/>
+                    <tabBarItem key="tabBarItem" title="" image="TodoListIcon" id="0YO-Pg-hxh"/>
                     <connections>
                         <outlet property="addItemView" destination="bSm-Yy-lx9" id="o1U-Fv-h0X"/>
                         <outlet property="tableView" destination="qMp-88-iWl" id="dRY-di-YvA"/>
@@ -260,7 +274,7 @@
             </objects>
             <point key="canvasLocation" x="1760.8" y="1747.536945812808"/>
         </scene>
-        <!--Message Board-->
+        <!--View Controller-->
         <scene sceneID="C40-z7-veM">
             <objects>
                 <viewController id="ndU-av-yPz" sceneMemberID="viewController">
@@ -270,12 +284,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="UwI-wq-KfJ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Message Board" id="4uZ-86-hoB"/>
+                    <tabBarItem key="tabBarItem" title="" image="ChatIcon" id="4uZ-86-hoB"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MIu-nL-da5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="793" y="2515"/>
+            <point key="canvasLocation" x="793" y="2700"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Tnp-Hs-han">
@@ -285,7 +299,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCo-r2-Bv4">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCo-r2-Bv4" customClass="RoundedButton" customModule="Roomies" customModuleProvider="target">
                                 <rect key="frame" x="50" y="678" width="275" height="50"/>
                                 <color key="backgroundColor" red="0.92891609668731689" green="0.21953278779983521" blue="0.19875350594520569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -363,6 +377,7 @@
                     <connections>
                         <outlet property="bottomButton" destination="Mo3-zk-d6j" id="rx2-aD-WGM"/>
                         <outlet property="houseIDLabel" destination="HO8-W0-DHW" id="3jX-Nt-HiK"/>
+                        <outlet property="logoutButton" destination="wCo-r2-Bv4" id="0Kn-KX-clo"/>
                         <outlet property="sendHouseIDButton" destination="YME-U4-fqN" id="8fm-2a-2fD"/>
                         <outlet property="settingsNavigationItem" destination="fc3-z0-hby" id="XFm-cv-RA1"/>
                         <outlet property="topButton" destination="GWO-4I-aTW" id="TNT-yB-GRq"/>
@@ -397,24 +412,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wV6-7v-oIm" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="50" y="91" width="275" height="30"/>
+                                <rect key="frame" x="50" y="91" width="275" height="42.666666666666657"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CW0-rU-1QA" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="50" y="205" width="275" height="30"/>
+                                <rect key="frame" x="50" y="243.33333333333337" width="275" height="43"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x9Y-0F-thg" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="50" y="167" width="275" height="30"/>
+                                <rect key="frame" x="50" y="192.66666666666666" width="275" height="42.666666666666657"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CEz-nt-SSX">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CEz-nt-SSX" customClass="RoundedButton" customModule="Roomies" customModuleProvider="target">
                                 <rect key="frame" x="50" y="604" width="275" height="50"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -428,13 +443,13 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BCa-BO-yJN" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="50" y="129" width="275" height="30"/>
+                                <rect key="frame" x="50" y="141.66666666666666" width="275" height="43"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djF-zj-diG" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
-                                <rect key="frame" x="50" y="604" width="275" height="50"/>
+                                <rect key="frame" x="125" y="604" width="125" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="NKd-CR-ALa"/>
@@ -456,7 +471,7 @@
                             <constraint firstItem="I7E-gb-Bff" firstAttribute="bottom" secondItem="CEz-nt-SSX" secondAttribute="bottom" constant="75" id="T3d-K6-k4P"/>
                             <constraint firstItem="wV6-7v-oIm" firstAttribute="top" secondItem="pGq-eH-gzn" secondAttribute="bottom" constant="20" id="TZP-V6-uul"/>
                             <constraint firstItem="x9Y-0F-thg" firstAttribute="leading" secondItem="I7E-gb-Bff" secondAttribute="leading" constant="50" id="UQf-f0-wNj"/>
-                            <constraint firstItem="djF-zj-diG" firstAttribute="leading" secondItem="I7E-gb-Bff" secondAttribute="leading" constant="50" id="VQe-dy-9hn"/>
+                            <constraint firstItem="djF-zj-diG" firstAttribute="leading" secondItem="I7E-gb-Bff" secondAttribute="leading" constant="125" id="VQe-dy-9hn"/>
                             <constraint firstItem="wV6-7v-oIm" firstAttribute="leading" secondItem="I7E-gb-Bff" secondAttribute="leading" constant="50" id="WFc-Kb-nsH"/>
                             <constraint firstItem="CEz-nt-SSX" firstAttribute="centerX" secondItem="I7E-gb-Bff" secondAttribute="centerX" id="ZCU-oK-R2h"/>
                             <constraint firstItem="mf6-2X-fAL" firstAttribute="top" secondItem="I7E-gb-Bff" secondAttribute="top" id="ZaS-tI-Rex"/>
@@ -464,7 +479,7 @@
                             <constraint firstItem="CEz-nt-SSX" firstAttribute="width" secondItem="CW0-rU-1QA" secondAttribute="width" id="eQc-SR-mn1"/>
                             <constraint firstItem="BCa-BO-yJN" firstAttribute="leading" secondItem="I7E-gb-Bff" secondAttribute="leading" constant="50" id="hq5-DQ-AJA"/>
                             <constraint firstItem="mf6-2X-fAL" firstAttribute="leading" secondItem="I7E-gb-Bff" secondAttribute="leading" constant="20" id="n6s-lw-Wh1"/>
-                            <constraint firstItem="I7E-gb-Bff" firstAttribute="trailing" secondItem="djF-zj-diG" secondAttribute="trailing" constant="50" id="x0v-VT-UTA"/>
+                            <constraint firstItem="I7E-gb-Bff" firstAttribute="trailing" secondItem="djF-zj-diG" secondAttribute="trailing" constant="125" id="x0v-VT-UTA"/>
                             <constraint firstItem="CW0-rU-1QA" firstAttribute="leading" secondItem="I7E-gb-Bff" secondAttribute="leading" constant="50" id="yMu-2W-kxL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="I7E-gb-Bff"/>
@@ -472,6 +487,7 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="continueButton" destination="CEz-nt-SSX" id="Xn9-FW-x9H"/>
                         <outlet property="emailTextField" destination="x9Y-0F-thg" id="c8n-AG-lMY"/>
                         <outlet property="firstNameTextField" destination="wV6-7v-oIm" id="sd8-W5-ShL"/>
                         <outlet property="lastNameTextField" destination="BCa-BO-yJN" id="jIe-bK-gbm"/>
@@ -549,6 +565,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0vU-Ia-t4T">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -565,7 +586,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Hck-KQ-Q9Z" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="VmJ-i8-zk2">
-                        <barButtonItem key="leftBarButtonItem" title="Settings" id="kVp-VD-fcm">
+                        <barButtonItem key="rightBarButtonItem" image="SettingsIcon" id="kVp-VD-fcm">
                             <connections>
                                 <segue destination="E52-Y4-whK" kind="show" id="A9O-Pk-dDF"/>
                             </connections>
@@ -575,6 +596,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
+                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="hlt-Ls-Cip" kind="relationship" relationship="viewControllers" id="beZ-qN-wGW"/>
@@ -586,8 +616,15 @@
             <point key="canvasLocation" x="792.79999999999995" y="1748.2758620689656"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ChatIcon" width="154.28572082519531" height="154.28572082519531"/>
+        <image name="PlusIcon" width="154.28572082519531" height="154.28572082519531"/>
+        <image name="SettingsIcon" width="154.28572082519531" height="154.28572082519531"/>
+        <image name="TodoListIcon" width="67.5" height="67.5"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="IjU-Y0-a5l"/>
         <segue reference="lfP-D1-Ad2"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
