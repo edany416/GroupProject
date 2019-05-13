@@ -8,17 +8,58 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ItemCellDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addItemView: UIView!
+    
+    private var items = [String]()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    var newItemName: String? {
+        willSet(newItem) {
+            items.append(newItem!)
+            DBManager.instance.REF_LISTS.child(UserServiceManager.houseID!).child("items").setValue(items)
+            tableView.reloadData()
+        }
     }
     
-    @IBAction func logoutTapped(_ sender: Any) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.dataSource = self
+        tableView.delegate = self
         
+        if let items = UserServiceManager.shoppingItems {
+            self.items = items
+            tableView.reloadData()
+        }
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addItemViewTapped))
+        addItemView.addGestureRecognizer(tapGesture)
+
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ItemCell
+        cell.itemName.text = items[indexPath.row]
+        cell.delegate = self
+
+        return cell
+    }
+    
+    func didTapCheckBox(for cell: UITableViewCell) {
+        print("check box was tapped")
+    }
+    
+    @objc private func addItemViewTapped() {
+        let addItemController = AddItemController()
+        addItemController.presetAlert(from: self)
+    }
+    
     
     /*
     // MARK: - Navigation

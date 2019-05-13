@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import SkyFloatingLabelTextField
+import NVActivityIndicatorView
 
 
 class SignUpViewController: UIViewController {
@@ -18,11 +19,14 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var lastNameTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var emailTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var passwordTextField: SkyFloatingLabelTextField!
+    @IBOutlet weak var loadingIndicatorView: NVActivityIndicatorView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        loadingIndicatorView.type = .ballBeat
+        
         var textFieldProps = SFTextFieldProps()
         textFieldProps.lineColor = UIColor.white
         textFieldProps.placeholderColor = UIColor.lightText
@@ -69,12 +73,19 @@ class SignUpViewController: UIViewController {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         
-        FirebaseAPIManager.createUser(withFirstName: firstName, lastName: lastName, email: email, password: password) { (success) in
+        let continueButton = sender as? UIButton
+        continueButton?.setTitle("", for: .normal)
+        
+        loadingIndicatorView.startAnimating()
+        
+        UserServiceManager.createUser(withFirstName: firstName, lastName: lastName, email: email, password: password) { (success) in
             if success {
-                print("Performing successful log in segue")
+                self.loadingIndicatorView.stopAnimating()
                 self.performSegue(withIdentifier: "SignUpSuccessfulSegue", sender: self)
             } else {
                 print("Error creating user")
+                self.loadingIndicatorView.stopAnimating()
+                continueButton?.setTitle("Continue", for: .normal)
                 //Alert user that there was an error creating a user
             }
         }

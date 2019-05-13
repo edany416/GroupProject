@@ -10,9 +10,11 @@
 		71F0FC829B4DAE7C5C42F341 /* Pods_RoomiesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A4828373AD572DE19C8C3C /* Pods_RoomiesTests.framework */; };
 		8C1817B62278F12C00D71F67 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1817B52278F12C00D71F67 /* LogInViewController.swift */; };
 		8C3050F12278E16E00666433 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C3050F02278E16E00666433 /* GoogleService-Info.plist */; };
-		8C3E4A72227A44C800AD2AA8 /* FirebaseAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E4A71227A44C800AD2AA8 /* FirebaseAPIManager.swift */; };
+		8C3E4A72227A44C800AD2AA8 /* UserServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E4A71227A44C800AD2AA8 /* UserServiceManager.swift */; };
 		8C3E4A77227E752F00AD2AA8 /* SFTextFieldProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E4A76227E752F00AD2AA8 /* SFTextFieldProps.swift */; };
 		8C3E4A79227E760200AD2AA8 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E4A78227E760200AD2AA8 /* UnderlinedTextField.swift */; };
+		8C621EA22288EE53009DB88A /* AddItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C621EA12288EE53009DB88A /* AddItemController.swift */; };
+		8C7E9C5B2288E31C00C0B554 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7E9C5A2288E31C00C0B554 /* ItemCell.swift */; };
 		8CC4B28022812A3D00D1760E /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC4B27F22812A3D00D1760E /* TestViewController.swift */; };
 		8CC4B2822281361700D1760E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC4B2812281361700D1760E /* HomeViewController.swift */; };
 		9F4851FDF244BE6FD9671FF6 /* Pods_RoomiesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CDD0182BF90EB048977580 /* Pods_RoomiesUITests.framework */; };
@@ -58,9 +60,11 @@
 		6C1E894AB139A962C45E52BC /* Pods-RoomiesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RoomiesTests.debug.xcconfig"; path = "Target Support Files/Pods-RoomiesTests/Pods-RoomiesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8C1817B52278F12C00D71F67 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		8C3050F02278E16E00666433 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		8C3E4A71227A44C800AD2AA8 /* FirebaseAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirebaseAPIManager.swift; path = Roomies/Model/FirebaseAPIManager.swift; sourceTree = SOURCE_ROOT; };
+		8C3E4A71227A44C800AD2AA8 /* UserServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserServiceManager.swift; path = Roomies/Model/UserServiceManager.swift; sourceTree = SOURCE_ROOT; };
 		8C3E4A76227E752F00AD2AA8 /* SFTextFieldProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFTextFieldProps.swift; sourceTree = "<group>"; };
 		8C3E4A78227E760200AD2AA8 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
+		8C621EA12288EE53009DB88A /* AddItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemController.swift; sourceTree = "<group>"; };
+		8C7E9C5A2288E31C00C0B554 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		8CC4B27F22812A3D00D1760E /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		8CC4B2812281361700D1760E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B788160522826EDD001FA227 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
@@ -122,7 +126,7 @@
 		8C3E4A75227E750C00AD2AA8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8C3E4A71227A44C800AD2AA8 /* FirebaseAPIManager.swift */,
+				8C3E4A71227A44C800AD2AA8 /* UserServiceManager.swift */,
 				B788160522826EDD001FA227 /* DBManager.swift */,
 				8C3E4A76227E752F00AD2AA8 /* SFTextFieldProps.swift */,
 				8C3E4A78227E760200AD2AA8 /* UnderlinedTextField.swift */,
@@ -215,6 +219,8 @@
 		D3E0CF1B2278CEB6006AF3E6 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				8C7E9C5A2288E31C00C0B554 /* ItemCell.swift */,
+				8C621EA12288EE53009DB88A /* AddItemController.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -464,9 +470,11 @@
 				8C3E4A79227E760200AD2AA8 /* UnderlinedTextField.swift in Sources */,
 				B788160622826EDD001FA227 /* DBManager.swift in Sources */,
 				8CC4B2822281361700D1760E /* HomeViewController.swift in Sources */,
+				8C7E9C5B2288E31C00C0B554 /* ItemCell.swift in Sources */,
 				D3E0CF202278D00D006AF3E6 /* SignUpViewController.swift in Sources */,
-				8C3E4A72227A44C800AD2AA8 /* FirebaseAPIManager.swift in Sources */,
+				8C3E4A72227A44C800AD2AA8 /* UserServiceManager.swift in Sources */,
 				8C3E4A77227E752F00AD2AA8 /* SFTextFieldProps.swift in Sources */,
+				8C621EA22288EE53009DB88A /* AddItemController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

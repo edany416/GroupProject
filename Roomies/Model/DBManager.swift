@@ -45,4 +45,9 @@ class DBManager {
     func createDBHouse(houseID: String, houseData: Dictionary<String, Any>) {
         REF_HOUSES.child(houseID).updateChildValues(houseData)
     }
+    
+    func createDBList(listID: String, listData: Dictionary<String, Any>) {
+        REF_LISTS.child(listID).updateChildValues(listData)
+        
+    }
 }

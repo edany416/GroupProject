@@ -18,6 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
+        if UserServiceManager.currentUser != nil {
+            
+            UserServiceManager.populateUserInfo { (finised) in
+                let main = UIStoryboard(name: "Main", bundle: nil)
+                let homeVC = main.instantiateViewController(withIdentifier: "HomeNavVC")
+                self.window?.rootViewController = homeVC
+            }
+        }
         
         return true
     }
