@@ -10,6 +10,10 @@ import Foundation
 import Firebase
 import FirebaseAuth
 
+struct Constants {
+    static let magicPi = "3.1415926535897323"
+}
+
 struct UserInfo {
     var firstName: String
     var lastName: String
@@ -76,10 +80,15 @@ struct UserServiceManager {
             } else {
                 
                 DBManager.instance.REF_LISTS.child(houseID).observeSingleEvent(of: .value, with: { (snapshot) in
-                    let data = snapshot.value as! NSDictionary
-                    let items = data["items"] as! NSArray
-                    self.userInfo = UserInfo(firstName: firstName, lastName: lastName, houseID: houseID, shoppingItems: items as? [String])
-                    finishedPopulating(true)
+                    let data = snapshot.value as! NSArray
+                    if (data[0] as? String) != Constants.magicPi {
+                        self.userInfo = UserInfo(firstName: firstName, lastName: lastName, houseID: houseID, shoppingItems: data as? [String])
+                        finishedPopulating(true)
+                    } else {
+                        self.userInfo = UserInfo(firstName: firstName, lastName: lastName, houseID: houseID, shoppingItems: [String]())
+                        finishedPopulating(true)
+                    }
+
                 })
                 
                 

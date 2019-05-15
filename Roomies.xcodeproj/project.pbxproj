@@ -17,6 +17,7 @@
 		8C621EA42289F20F009DB88A /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C621EA32289F20F009DB88A /* CheckBoxView.swift */; };
 		8C621EA6228A22CB009DB88A /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C621EA5228A22CB009DB88A /* RoundedButton.swift */; };
 		8C7E9C5B2288E31C00C0B554 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7E9C5A2288E31C00C0B554 /* ItemCell.swift */; };
+		8C823F0E228B9DF30057B8D2 /* JoinHouseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C823F0D228B9DF30057B8D2 /* JoinHouseController.swift */; };
 		8CC4B28022812A3D00D1760E /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC4B27F22812A3D00D1760E /* TestViewController.swift */; };
 		8CC4B2822281361700D1760E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC4B2812281361700D1760E /* HomeViewController.swift */; };
 		9F4851FDF244BE6FD9671FF6 /* Pods_RoomiesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CDD0182BF90EB048977580 /* Pods_RoomiesUITests.framework */; };
@@ -69,6 +70,7 @@
 		8C621EA32289F20F009DB88A /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
 		8C621EA5228A22CB009DB88A /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		8C7E9C5A2288E31C00C0B554 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		8C823F0D228B9DF30057B8D2 /* JoinHouseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinHouseController.swift; sourceTree = "<group>"; };
 		8CC4B27F22812A3D00D1760E /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		8CC4B2812281361700D1760E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B788160522826EDD001FA227 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				8C621EA12288EE53009DB88A /* AddItemController.swift */,
 				8C621EA32289F20F009DB88A /* CheckBoxView.swift */,
 				8C621EA5228A22CB009DB88A /* RoundedButton.swift */,
+				8C823F0D228B9DF30057B8D2 /* JoinHouseController.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				8CC4B2822281361700D1760E /* HomeViewController.swift in Sources */,
 				8C7E9C5B2288E31C00C0B554 /* ItemCell.swift in Sources */,
 				D3E0CF202278D00D006AF3E6 /* SignUpViewController.swift in Sources */,
+				8C823F0E228B9DF30057B8D2 /* JoinHouseController.swift in Sources */,
 				8C3E4A72227A44C800AD2AA8 /* UserServiceManager.swift in Sources */,
 				8C3E4A77227E752F00AD2AA8 /* SFTextFieldProps.swift in Sources */,
 				8C621EA22288EE53009DB88A /* AddItemController.swift in Sources */,

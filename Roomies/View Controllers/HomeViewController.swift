@@ -19,7 +19,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var newItemName: String? {
         willSet(newItem) {
             items.append(newItem!)
-            DBManager.instance.REF_LISTS.child(UserServiceManager.houseID!).child("items").setValue(items)
+            var itemsDict = [String : String]()
+            for (index, element) in items.enumerated() {
+                itemsDict[String(index)] = element
+            }
+            DBManager.instance.REF_LISTS.child(UserServiceManager.houseID!).setValue(itemsDict)
             tableView.reloadData()
         }
     }
@@ -37,6 +41,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addItemViewTapped))
         addItemView.addGestureRecognizer(tapGesture)
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if UserServiceManager.houseID != nil {
+            UserServiceManager.populateUserInfo { (true) in
+                self.tableView.reloadData()
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

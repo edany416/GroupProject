@@ -18,10 +18,30 @@ class SettingsViewController: UIViewController, MFMessageComposeViewControllerDe
     @IBOutlet weak var settingsNavigationItem: UINavigationItem!
     @IBOutlet weak var logoutButton: RoundedButton!
     
+    var houseID: String? {
+        willSet(id) {
+            UserServiceManager.setHouseID(uuid: id!)
+            DBManager.instance.REF_USERS.child(UserServiceManager.currentUser!.uid).updateChildValues(["houseID" : id!])
+            
+            DBManager.instance.REF_HOUSES.child(id!).observeSingleEvent(of: .value, with: { (snapshot) in
+                let data = snapshot.value as! NSDictionary
+                let members = data["memberIDs"] as! NSMutableDictionary
+                members[UserServiceManager.currentUser!.uid] = UserServiceManager.currentUser!.uid
+                DBManager.instance.REF_HOUSES.child(UserServiceManager.houseID!).child("memberIDs").setValue(members)
+                print(members)
+            })
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         logoutButton.backgroundColor = UIColor.red
         logoutButton.outlineColor = UIColor.red
+        updateLayout()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         updateLayout()
     }
     
@@ -33,8 +53,12 @@ class SettingsViewController: UIViewController, MFMessageComposeViewControllerDe
         
         if UserServiceManager.houseID == nil { // User tapped to create a house
             let uuid = UUID().uuidString
-            DBManager.instance.createDBHouse(houseID: uuid, houseData: ["listID": uuid, "chatID": uuid, "memberIDs": UserServiceManager.currentUser!.uid])
-            DBManager.instance.createDBList(listID: uuid, listData: ["items": []])
+            //Create new house
+            DBManager.instance.createDBHouse(houseID: uuid, houseData: ["listID": uuid, "chatID": uuid, "memberIDs":[UserServiceManager.currentUser!.uid: UserServiceManager.currentUser!.uid]])
+            
+            DBManager.instance.createDBList(listID: uuid, listData: ["0":Constants.magicPi])
+            
+            
             DBManager.instance.REF_USERS.child(UserServiceManager.currentUser!.uid).updateChildValues(["houseID" : uuid])
             
             
@@ -48,7 +72,9 @@ class SettingsViewController: UIViewController, MFMessageComposeViewControllerDe
     }
     
     
-    @IBAction func bottomButtonTapped(_ sender: Any) {
+    @IBAction func joinHouseTapped(_ sender: Any) {
+        let joinHouseAlert = JoinHouseController()
+        joinHouseAlert.presetAlert(from: self)
     }
     
     @IBAction func onLogout(_ sender: Any) {

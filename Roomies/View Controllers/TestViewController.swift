@@ -26,6 +26,11 @@ class TestViewController: UIViewController {
     @IBAction func stop(_ sender: Any) {
         aView.stopAnimating()
     }
+    
+    
+    @IBAction func logout(_ sender: Any) {
+        UserServiceManager.signOut()
+    }
     /*
     // MARK: - Navigation
 
