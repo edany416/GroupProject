@@ -151,12 +151,12 @@ class FirebaseManager {
             //remove observers
             DBManager.instance.REF_LISTS.removeAllObservers()
             self.isObserving = false
+            completion()
         })
-        completion()
     }
     
     func removeUserFromHouse(completion: @escaping () -> ()) {
-        DBManager.instance.REF_HOUSES.child(self.tempHouseID).observeSingleEvent(of: .value) { (snapshot) in
+        DBManager.instance.REF_HOUSES.child(self.tempHouseID).observeSingleEvent(of: .value, with:{ (snapshot) in
             let data = snapshot.value as! NSDictionary
             let numMembers = data["numMembers"] as! NSNumber
             //if there are still members in the house, decrease numMembers
@@ -169,8 +169,8 @@ class FirebaseManager {
                 DBManager.instance.REF_HOUSES.child(self.tempHouseID).removeValue()
                 DBManager.instance.REF_LISTS.child(self.tempHouseID).removeValue()
             }
-        }
-        completion()
+            completion()
+        })
     }
     
     func populateUserInfo(completion: @escaping () -> ()) {
