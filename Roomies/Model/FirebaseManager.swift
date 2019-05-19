@@ -134,6 +134,20 @@ class FirebaseManager {
         })
     }
     
+    //function for leaving a house
+    func leaveHouse(completion: @escaping () -> ()) {
+        //remove user from house's member list
+        DBManager.instance.REF_HOUSES.child(self.houseID).child("memberIDs").child(self.userID).removeValue()
+        //update user's house to empty string in firebase
+        DBManager.instance.REF_USERS.child(FirebaseManager.instance.userID).updateChildValues(["houseID" : ""])
+        //reset user's info locally
+        self.userBasedInfo = UserBasedInfo(firstName: self.userBasedInfo.firstName, lastName: self.userBasedInfo.lastName, houseID: "")
+        self.houseBasedInfo = nil
+        //remove observers
+        DBManager.instance.REF_LISTS.removeAllObservers()
+        self.isObserving = false
+        completion()
+    }
     
     func populateUserInfo(completion: @escaping () -> ()) {
         populateBasicInfo(completion: { (isInHouse) in
@@ -172,7 +186,7 @@ class FirebaseManager {
                 let items = data["items"] as! NSDictionary
                 var dataArray = [String]()
                 
-                for (key, value) in items {
+                for (_ , value) in items {
                     dataArray.append(value as! String)
                 }
                 self.houseBasedInfo = HouseBasedInfo(products: dataArray)
@@ -182,17 +196,3 @@ class FirebaseManager {
     }
     
 }
-
-
-//            var dataArray = [String]()
-//
-//            for (key, value) in data {
-//                dataArray.append(value as! String)
-//            }
-//
-//            if (data[0] as? String) != Constants.magicPi { //List has products in it
-//                self.houseBasedInfo = HouseBasedInfo(products: dataArray)
-//            } else {
-//                self.houseBasedInfo = HouseBasedInfo(products: [String]())
-//            }
-
