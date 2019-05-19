@@ -40,8 +40,9 @@ class LogInViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let user = UserServiceManager.currentUser {
-            emailTextField.text = user.email
+
+        if FirebaseManager.instance.userIsLoggedIn {
+            emailTextField.text = Auth.auth().currentUser?.email
         }
     }
     
@@ -49,12 +50,11 @@ class LogInViewController: UIViewController {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         
-        UserServiceManager.signIn(withEmail: email, password: password) { (success) in
+        FirebaseManager.instance.logIn(withEmail: email, password: password) { (success) in
             if success {
                 self.performSegue(withIdentifier: "Log In Successful Segue", sender: self)
             } else {
                 print("Login unsuccessful")
-                //Alert the user that there was a login error
             }
         }
     }

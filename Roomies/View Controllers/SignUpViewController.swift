@@ -79,8 +79,8 @@ class SignUpViewController: UIViewController {
         continueButton?.setTitle("", for: .normal)
         
         loadingIndicatorView.startAnimating()
-        
-        UserServiceManager.createUser(withFirstName: firstName, lastName: lastName, email: email, password: password) { (success) in
+                
+        FirebaseManager.instance.createUser(withFirstName: firstName, lastName: lastName, email: email, password: password) { (success) in
             if success {
                 self.loadingIndicatorView.stopAnimating()
                 self.performSegue(withIdentifier: "SignUpSuccessfulSegue", sender: self)
@@ -88,7 +88,6 @@ class SignUpViewController: UIViewController {
                 print("Error creating user")
                 self.loadingIndicatorView.stopAnimating()
                 continueButton?.setTitle("Continue", for: .normal)
-                //Alert user that there was an error creating a user
             }
         }
     }

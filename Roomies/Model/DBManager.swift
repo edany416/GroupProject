@@ -47,7 +47,9 @@ class DBManager {
     }
     
     func createDBList(listID: String, listData: Dictionary<String, Any>) {
-        REF_LISTS.child(listID).updateChildValues(listData)
+        //REF_LISTS.child(listID).updateChildValues(listData)
+        //REF_LISTS.child(listID).childByAutoId().key
+        DBManager.instance.REF_LISTS.updateChildValues(["/\(listID)/items": "items"])
         
     }
 }

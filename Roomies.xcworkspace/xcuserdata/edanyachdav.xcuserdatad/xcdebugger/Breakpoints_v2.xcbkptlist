@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Roomies/View Controllers/HomeViewController.swift"
-            timestampString = "579582140.625163"
+            filePath = "Roomies/Model/FirebaseManager.swift"
+            timestampString = "579925771.2713619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "logIn(withEmail:password:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

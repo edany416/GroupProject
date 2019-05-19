@@ -220,8 +220,10 @@
                                                 <constraint firstItem="QId-MN-lfi" firstAttribute="top" secondItem="AvP-yb-1hu" secondAttribute="topMargin" constant="8" id="Ot2-4z-BKa"/>
                                                 <constraint firstAttribute="trailing" secondItem="iVW-i5-DSO" secondAttribute="trailing" constant="20" id="Qwr-Sc-Cna"/>
                                                 <constraint firstItem="HYG-dZ-Srl" firstAttribute="top" secondItem="QId-MN-lfi" secondAttribute="bottom" constant="30" id="UH9-zu-9qa"/>
+                                                <constraint firstItem="iVW-i5-DSO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QId-MN-lfi" secondAttribute="trailing" constant="8" symbolic="YES" id="YXa-gB-BpL"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="HYG-dZ-Srl" secondAttribute="bottom" constant="8" id="e2J-5g-O2y"/>
                                                 <constraint firstItem="QId-MN-lfi" firstAttribute="leading" secondItem="AvP-yb-1hu" secondAttribute="leadingMargin" id="qi1-Vv-0Cx"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HYG-dZ-Srl" secondAttribute="trailing" constant="20" symbolic="YES" id="vif-Kv-HI1"/>
                                                 <constraint firstItem="iVW-i5-DSO" firstAttribute="centerY" secondItem="AvP-yb-1hu" secondAttribute="centerY" id="wFN-nf-MWX"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -328,7 +330,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="joinHouseTapped:" destination="E52-Y4-whK" eventType="touchUpInside" id="Dpl-ad-hdz"/>
+                                    <segue destination="VyE-FW-a6X" kind="show" id="3Lr-bG-cOA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWO-4I-aTW">
@@ -347,7 +349,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YME-U4-fqN">
                                 <rect key="frame" x="114.66666666666669" y="424.33333333333331" width="146" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="Send ID via text mesage"/>
+                                <state key="normal" title="Send ID via text mesage">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="sendIDTapped:" destination="E52-Y4-whK" eventType="touchUpInside" id="z60-wg-vaP"/>
                                 </connections>
@@ -386,6 +390,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nJe-eB-NC5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2612" y="1748.7256371814094"/>
+        </scene>
+        <!--Join House View Controller-->
+        <scene sceneID="6CM-Q2-M2H">
+            <objects>
+                <viewController id="VyE-FW-a6X" customClass="JoinHouseViewController" customModule="Roomies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3bB-Ih-Kiy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m0j-hn-J6N">
+                                <rect key="frame" x="50" y="163" width="275" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCv-gw-qTR">
+                                <rect key="frame" x="50" y="201" width="275" height="30"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Join">
+                                    <color key="titleColor" red="0.87843137250000003" green="0.1960784314" blue="0.0078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="joinTapped:" destination="VyE-FW-a6X" eventType="touchUpInside" id="0sN-fb-CdD"/>
+                                    <action selector="joinTapped:" destination="cjA-zG-eIn" eventType="touchUpInside" id="2F5-op-iFK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KhK-zS-dzq" firstAttribute="trailing" secondItem="m0j-hn-J6N" secondAttribute="trailing" constant="50" id="1Pd-ur-pew"/>
+                            <constraint firstItem="lCv-gw-qTR" firstAttribute="leading" secondItem="KhK-zS-dzq" secondAttribute="leading" constant="50" id="4tn-ZH-FuR"/>
+                            <constraint firstItem="m0j-hn-J6N" firstAttribute="top" secondItem="KhK-zS-dzq" secondAttribute="top" constant="75" id="JvO-O9-Zx0"/>
+                            <constraint firstItem="KhK-zS-dzq" firstAttribute="trailing" secondItem="lCv-gw-qTR" secondAttribute="trailing" constant="50" id="Qmx-6t-DgY"/>
+                            <constraint firstItem="m0j-hn-J6N" firstAttribute="leading" secondItem="KhK-zS-dzq" secondAttribute="leading" constant="50" id="awC-zy-WYl"/>
+                            <constraint firstItem="lCv-gw-qTR" firstAttribute="top" secondItem="m0j-hn-J6N" secondAttribute="bottom" constant="8" id="z5y-6i-mNH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KhK-zS-dzq"/>
+                    </view>
+                    <connections>
+                        <outlet property="houseIdTextField" destination="m0j-hn-J6N" id="k9H-nd-TC9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aeQ-Ja-6WH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="cjA-zG-eIn" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3439" y="1756"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="Aor-YC-Phc">
@@ -633,8 +683,8 @@
         <image name="TodoListIcon" width="67.5" height="67.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kzn-6P-uXE"/>
-        <segue reference="dGz-ud-cCM"/>
+        <segue reference="IjU-Y0-a5l"/>
+        <segue reference="lfP-D1-Ad2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

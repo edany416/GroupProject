@@ -18,20 +18,9 @@ class SettingsViewController: UIViewController, MFMessageComposeViewControllerDe
     @IBOutlet weak var settingsNavigationItem: UINavigationItem!
     @IBOutlet weak var logoutButton: RoundedButton!
     
-    var houseID: String? {
-        willSet(id) {
-            UserServiceManager.setHouseID(uuid: id!)
-            DBManager.instance.REF_USERS.child(UserServiceManager.currentUser!.uid).updateChildValues(["houseID" : id!])
-            
-            DBManager.instance.REF_HOUSES.child(id!).observeSingleEvent(of: .value, with: { (snapshot) in
-                let data = snapshot.value as! NSDictionary
-                let members = data["memberIDs"] as! NSMutableDictionary
-                members[UserServiceManager.currentUser!.uid] = UserServiceManager.currentUser!.uid
-                DBManager.instance.REF_HOUSES.child(UserServiceManager.houseID!).child("memberIDs").setValue(members)
-                print(members)
-            })
-        }
-    }
+    //userJustJoined {
+    
+    //}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +29,8 @@ class SettingsViewController: UIViewController, MFMessageComposeViewControllerDe
         updateLayout()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         updateLayout()
     }
     
@@ -50,53 +39,35 @@ class SettingsViewController: UIViewController, MFMessageComposeViewControllerDe
     }
     
     @IBAction func topButtonTapped(_ sender: Any) {
-        
-        if UserServiceManager.houseID == nil { // User tapped to create a house
-            let uuid = UUID().uuidString
-            //Create new house
-            DBManager.instance.createDBHouse(houseID: uuid, houseData: ["listID": uuid, "chatID": uuid, "memberIDs":[UserServiceManager.currentUser!.uid: UserServiceManager.currentUser!.uid]])
-            
-            DBManager.instance.createDBList(listID: uuid, listData: ["0":Constants.magicPi])
-            
-            
-            DBManager.instance.REF_USERS.child(UserServiceManager.currentUser!.uid).updateChildValues(["houseID" : uuid])
-            
-            
-            
-            UserServiceManager.setHouseID(uuid: uuid)
-            
+        if !FirebaseManager.instance.userBelongsToHouse { // User tapped to create a house
+            FirebaseManager.instance.createHouse(completion: { () in
+                self.updateLayout()
+            })
         } else { // Code for leaving a house
             
         }
-        updateLayout()
-    }
-    
-    
-    @IBAction func joinHouseTapped(_ sender: Any) {
-        let joinHouseAlert = JoinHouseController()
-        joinHouseAlert.presetAlert(from: self)
     }
     
     @IBAction func onLogout(_ sender: Any) {
-        UserServiceManager.signOut()
+        FirebaseManager.instance.logOut()
     }
     
     @IBAction func sendIDTapped(_ sender: Any) {
         let messageVC = MFMessageComposeViewController()
         
-        messageVC.body = UserServiceManager.houseID!
-        messageVC.recipients = ["Enter number"]
+        messageVC.body = FirebaseManager.instance.houseID
+        messageVC.recipients = ["Recipients"]
         messageVC.messageComposeDelegate = self
         
         self.present(messageVC, animated: true, completion: nil)
     }
     private func updateLayout() {
         
-        if let houseID = UserServiceManager.houseID { //User belongs to a house
+        if FirebaseManager.instance.userBelongsToHouse {
             topButton.setTitle("Leave house", for: .normal)
             bottomButton.isHidden = true
             houseIDLabel.isHidden = false
-            houseIDLabel.text = "House ID:\n\(houseID)"
+            houseIDLabel.text = "House ID:\n\(FirebaseManager.instance.houseID)"
             sendHouseIDButton.isHidden = false
         } else {
             topButton.setTitle("Create a house", for: .normal)

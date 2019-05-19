@@ -1,35 +1,29 @@
 //
-//  TestViewController.swift
+//  JoinHouseViewController.swift
 //  Roomies
 //
-//  Created by edan yachdav on 5/6/19.
+//  Created by edan yachdav on 5/15/19.
 //  Copyright © 2019 Roomies codepath. All rights reserved.
 //
 
 import UIKit
-import NVActivityIndicatorView
 
+class JoinHouseViewController: UIViewController {
 
-class TestViewController: UIViewController {
-
-    @IBOutlet weak var aView: NVActivityIndicatorView!
+    @IBOutlet weak var houseIdTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        aView.type = .ballSpinFadeLoader
-    }
-    
-    @IBAction func start(_ sender: Any) {
-        aView.startAnimating()
-    }
-    
-    @IBAction func stop(_ sender: Any) {
-        aView.stopAnimating()
     }
     
     
-    @IBAction func logout(_ sender: Any) {
-        FirebaseManager.instance.logOut()
+    @IBAction func joinTapped(_ sender: Any) {
+        if let houseId = houseIdTextField.text {
+            FirebaseManager.instance.joinHouse(with: houseId, completion: {() in
+                _ = self.navigationController?.popViewController(animated: true)
+            })
+        }
     }
+    
     /*
     // MARK: - Navigation
 

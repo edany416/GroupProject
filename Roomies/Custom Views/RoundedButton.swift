@@ -36,7 +36,7 @@ class RoundedButton: UIButton {
     override func draw(_ rect: CGRect) {
         outlineColor.setStroke()
 
-        var straightBorderPath = UIBezierPath()
+        let straightBorderPath = UIBezierPath()
         straightBorderPath.lineWidth = 5.0
         var startPoint = CGPoint(x: self.bounds.height/2, y: 0)
         straightBorderPath.move(to: startPoint)
@@ -45,7 +45,7 @@ class RoundedButton: UIButton {
         straightBorderPath.stroke()
         
         var centerPoint = CGPoint(x: self.bounds.width - self.bounds.height/2, y: self.bounds.height/2)
-        var semiCirclePath = UIBezierPath()
+        let semiCirclePath = UIBezierPath()
         semiCirclePath.lineWidth = 5.0
         semiCirclePath.addArc(withCenter: centerPoint,
                        radius: self.bounds.height/2,
