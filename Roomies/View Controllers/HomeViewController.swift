@@ -45,6 +45,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if FirebaseManager.instance.userBelongsToHouse && !FirebaseManager.instance.isObserving {
             attachObserver()
         }
+        else {
+            if items != nil {
+                items = nil
+                tableView.reloadData()
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

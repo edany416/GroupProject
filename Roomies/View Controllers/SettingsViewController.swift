@@ -44,7 +44,9 @@ class SettingsViewController: UIViewController, MFMessageComposeViewControllerDe
                 self.updateLayout()
             })
         } else { // Code for leaving a house
-            
+            FirebaseManager.instance.leaveHouse(completion: { () in
+                self.updateLayout()
+            })
         }
     }
     
@@ -61,8 +63,8 @@ class SettingsViewController: UIViewController, MFMessageComposeViewControllerDe
         
         self.present(messageVC, animated: true, completion: nil)
     }
+    
     private func updateLayout() {
-        
         if FirebaseManager.instance.userBelongsToHouse {
             topButton.setTitle("Leave house", for: .normal)
             bottomButton.isHidden = true
