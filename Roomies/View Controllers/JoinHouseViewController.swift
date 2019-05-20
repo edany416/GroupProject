@@ -7,12 +7,25 @@
 //
 
 import UIKit
+import SkyFloatingLabelTextField
 
 class JoinHouseViewController: UIViewController {
 
-    @IBOutlet weak var houseIdTextField: UITextField!
+    @IBOutlet weak var houseIdTextField: SkyFloatingLabelTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var textFieldProps = SFTextFieldProps()
+        textFieldProps.lineColor = UIColor.black
+        textFieldProps.placeholderColor = UIColor.lightText
+        textFieldProps.selectedLineColor = UIColor.black
+        textFieldProps.selectedTitleColor = UIColor.black
+        textFieldProps.textColor = UIColor.black
+        textFieldProps.titleColor = UIColor.black
+        
+        textFieldProps.placeHolderText = "HOUSE ID"
+        houseIdTextField.setProperties(props: textFieldProps)
+        
     }
     
     

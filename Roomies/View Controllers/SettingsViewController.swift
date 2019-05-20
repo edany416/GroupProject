@@ -13,14 +13,11 @@ class SettingsViewController: UIViewController, MFMessageComposeViewControllerDe
     
     @IBOutlet weak var topButton: UIButton!
     @IBOutlet weak var bottomButton: UIButton!
+    @IBOutlet weak var houseIDTitle: UILabel!
     @IBOutlet weak var houseIDLabel: UILabel!
     @IBOutlet weak var sendHouseIDButton: UIButton!
     @IBOutlet weak var settingsNavigationItem: UINavigationItem!
     @IBOutlet weak var logoutButton: RoundedButton!
-    
-    //userJustJoined {
-    
-    //}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,13 +66,15 @@ class SettingsViewController: UIViewController, MFMessageComposeViewControllerDe
             topButton.setTitle("Leave house", for: .normal)
             bottomButton.isHidden = true
             houseIDLabel.isHidden = false
-            houseIDLabel.text = "House ID:\n\(FirebaseManager.instance.houseID)"
+            houseIDTitle.isHidden = false
+            houseIDLabel.text = "\(FirebaseManager.instance.houseID)"
             sendHouseIDButton.isHidden = false
         } else {
             topButton.setTitle("Create a house", for: .normal)
             bottomButton.isHidden = false
             bottomButton.setTitle("Join a house", for: .normal)
             houseIDLabel.isHidden = true
+            houseIDTitle.isHidden = true
             sendHouseIDButton.isHidden = true
         }
     }

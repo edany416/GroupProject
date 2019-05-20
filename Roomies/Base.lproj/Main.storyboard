@@ -112,19 +112,19 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mfv-46-Hn3" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="50" y="91" width="275" height="42.666666666666657"/>
+                                        <rect key="frame" x="50" y="91" width="275" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xjW-6v-K2P" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="50" y="153.66666666666666" width="275" height="43"/>
+                                        <rect key="frame" x="50" y="141" width="275" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21I-TI-6io" customClass="RoundedButton" customModule="Roomies" customModuleProvider="target">
-                                        <rect key="frame" x="50" y="246.66666666666663" width="275" height="50"/>
+                                        <rect key="frame" x="50" y="221" width="275" height="50"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="MtR-tv-oBG"/>
@@ -314,13 +314,13 @@
                                     <action selector="onLogout:" destination="E52-Y4-whK" eventType="touchUpInside" id="ez2-XQ-zYx"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="House ID:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HO8-W0-DHW">
-                                <rect key="frame" x="50" y="396" width="275" height="20.333333333333314"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000-000-000-000-000..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HO8-W0-DHW">
+                                <rect key="frame" x="30" y="272" width="315" height="21"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mo3-zk-d6j">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mo3-zk-d6j" customClass="RoundedButton" customModule="Roomies" customModuleProvider="target">
                                 <rect key="frame" x="50" y="176" width="275" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -333,7 +333,7 @@
                                     <segue destination="VyE-FW-a6X" kind="show" id="3Lr-bG-cOA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWO-4I-aTW">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWO-4I-aTW" customClass="RoundedButton" customModule="Roomies" customModuleProvider="target">
                                 <rect key="frame" x="50" y="118" width="275" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -347,7 +347,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YME-U4-fqN">
-                                <rect key="frame" x="114.66666666666669" y="424.33333333333331" width="146" height="28"/>
+                                <rect key="frame" x="114.66666666666669" y="301" width="146" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Send ID via text mesage">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -356,6 +356,12 @@
                                     <action selector="sendIDTapped:" destination="E52-Y4-whK" eventType="touchUpInside" id="z60-wg-vaP"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="House ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZfJ-ZU-q58">
+                                <rect key="frame" x="30" y="243" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -363,16 +369,18 @@
                             <constraint firstItem="GWO-4I-aTW" firstAttribute="leading" secondItem="hek-9V-rtc" secondAttribute="leading" constant="50" id="BPr-yU-59M"/>
                             <constraint firstItem="Mo3-zk-d6j" firstAttribute="top" secondItem="GWO-4I-aTW" secondAttribute="bottom" constant="8" id="EOB-Rw-Ii7"/>
                             <constraint firstItem="YME-U4-fqN" firstAttribute="centerX" secondItem="MgA-FA-XNF" secondAttribute="centerX" id="ESP-AL-GW2"/>
-                            <constraint firstItem="HO8-W0-DHW" firstAttribute="centerY" secondItem="MgA-FA-XNF" secondAttribute="centerY" id="MjI-Qr-ocF"/>
-                            <constraint firstItem="hek-9V-rtc" firstAttribute="trailing" secondItem="HO8-W0-DHW" secondAttribute="trailing" constant="50" id="TYF-i8-hTw"/>
+                            <constraint firstItem="hek-9V-rtc" firstAttribute="trailing" secondItem="HO8-W0-DHW" secondAttribute="trailing" constant="30" id="TYF-i8-hTw"/>
                             <constraint firstItem="hek-9V-rtc" firstAttribute="trailing" secondItem="Mo3-zk-d6j" secondAttribute="trailing" constant="50" id="UOs-iS-F1E"/>
                             <constraint firstItem="GWO-4I-aTW" firstAttribute="top" secondItem="hek-9V-rtc" secondAttribute="top" constant="30" id="WFt-x7-gvb"/>
-                            <constraint firstItem="HO8-W0-DHW" firstAttribute="leading" secondItem="hek-9V-rtc" secondAttribute="leading" constant="50" id="Xac-Ry-MSt"/>
+                            <constraint firstItem="HO8-W0-DHW" firstAttribute="leading" secondItem="hek-9V-rtc" secondAttribute="leading" constant="30" id="Xac-Ry-MSt"/>
                             <constraint firstItem="YME-U4-fqN" firstAttribute="top" secondItem="HO8-W0-DHW" secondAttribute="bottom" constant="8" id="ZkM-mz-l1Y"/>
                             <constraint firstItem="hek-9V-rtc" firstAttribute="bottom" secondItem="wCo-r2-Bv4" secondAttribute="bottom" constant="50" id="cyJ-Kq-H1v"/>
+                            <constraint firstItem="ZfJ-ZU-q58" firstAttribute="leading" secondItem="HO8-W0-DHW" secondAttribute="leading" id="iDn-SL-1H6"/>
                             <constraint firstItem="hek-9V-rtc" firstAttribute="trailing" secondItem="GWO-4I-aTW" secondAttribute="trailing" constant="50" id="jwh-5L-ocr"/>
                             <constraint firstItem="hek-9V-rtc" firstAttribute="trailing" secondItem="wCo-r2-Bv4" secondAttribute="trailing" constant="50" id="vC3-qe-O4a"/>
+                            <constraint firstItem="ZfJ-ZU-q58" firstAttribute="top" secondItem="GWO-4I-aTW" secondAttribute="bottom" constant="75" id="wKg-le-BPf"/>
                             <constraint firstItem="wCo-r2-Bv4" firstAttribute="leading" secondItem="hek-9V-rtc" secondAttribute="leading" constant="50" id="wei-Pm-Y7G"/>
+                            <constraint firstItem="HO8-W0-DHW" firstAttribute="top" secondItem="ZfJ-ZU-q58" secondAttribute="bottom" constant="8" symbolic="YES" id="zkv-VH-RBW"/>
                             <constraint firstItem="Mo3-zk-d6j" firstAttribute="leading" secondItem="hek-9V-rtc" secondAttribute="leading" constant="50" id="zpL-wD-Ij0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hek-9V-rtc"/>
@@ -381,6 +389,7 @@
                     <connections>
                         <outlet property="bottomButton" destination="Mo3-zk-d6j" id="rx2-aD-WGM"/>
                         <outlet property="houseIDLabel" destination="HO8-W0-DHW" id="3jX-Nt-HiK"/>
+                        <outlet property="houseIDTitle" destination="ZfJ-ZU-q58" id="jbK-JK-fvB"/>
                         <outlet property="logoutButton" destination="wCo-r2-Bv4" id="0Kn-KX-clo"/>
                         <outlet property="sendHouseIDButton" destination="YME-U4-fqN" id="8fm-2a-2fD"/>
                         <outlet property="settingsNavigationItem" destination="fc3-z0-hby" id="XFm-cv-RA1"/>
@@ -389,7 +398,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nJe-eB-NC5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2612" y="1748.7256371814094"/>
+            <point key="canvasLocation" x="2612" y="1748.2758620689656"/>
         </scene>
         <!--Join House View Controller-->
         <scene sceneID="6CM-Q2-M2H">
@@ -399,15 +408,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m0j-hn-J6N">
-                                <rect key="frame" x="50" y="163" width="275" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m0j-hn-J6N" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                <rect key="frame" x="50" y="163" width="275" height="39.333333333333343"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCv-gw-qTR">
-                                <rect key="frame" x="50" y="201" width="275" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCv-gw-qTR" customClass="RoundedButton" customModule="Roomies" customModuleProvider="target">
+                                <rect key="frame" x="50" y="232.33333333333337" width="275" height="50"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="KBq-Kb-dcm"/>
+                                </constraints>
                                 <state key="normal" title="Join">
                                     <color key="titleColor" red="0.87843137250000003" green="0.1960784314" blue="0.0078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -424,18 +436,18 @@
                             <constraint firstItem="m0j-hn-J6N" firstAttribute="top" secondItem="KhK-zS-dzq" secondAttribute="top" constant="75" id="JvO-O9-Zx0"/>
                             <constraint firstItem="KhK-zS-dzq" firstAttribute="trailing" secondItem="lCv-gw-qTR" secondAttribute="trailing" constant="50" id="Qmx-6t-DgY"/>
                             <constraint firstItem="m0j-hn-J6N" firstAttribute="leading" secondItem="KhK-zS-dzq" secondAttribute="leading" constant="50" id="awC-zy-WYl"/>
-                            <constraint firstItem="lCv-gw-qTR" firstAttribute="top" secondItem="m0j-hn-J6N" secondAttribute="bottom" constant="8" id="z5y-6i-mNH"/>
+                            <constraint firstItem="lCv-gw-qTR" firstAttribute="top" secondItem="m0j-hn-J6N" secondAttribute="bottom" constant="30" id="z5y-6i-mNH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KhK-zS-dzq"/>
                     </view>
                     <connections>
-                        <outlet property="houseIdTextField" destination="m0j-hn-J6N" id="k9H-nd-TC9"/>
+                        <outlet property="houseIdTextField" destination="m0j-hn-J6N" id="Vge-JX-fhN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aeQ-Ja-6WH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="cjA-zG-eIn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3439" y="1756"/>
+            <point key="canvasLocation" x="3437.5999999999999" y="1755.6650246305419"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="Aor-YC-Phc">

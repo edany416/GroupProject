@@ -70,6 +70,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func didTapCheckBox(for cell: UITableViewCell) {
         print("check box was tapped")
+         DBManager.instance.REF_LISTS.up
+        
     }
     
     @objc private func addItemViewTapped() {
