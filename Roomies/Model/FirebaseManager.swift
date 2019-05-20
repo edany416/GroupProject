@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 
 struct Constants {
-    static let magicPi = "3.1415926535897323"
+    static let firstMember = 1
 }
 
 private struct UserBasedInfo {
@@ -45,7 +45,7 @@ class FirebaseManager {
     var userID: String {
         get {return Auth.auth().currentUser!.uid}
     }
-    
+    var tempHouseID = ""
     var isObserving = false
     
     func createUser(withFirstName firstName: String, lastName: String, email: String, password: String, completion:@escaping (Bool) -> ()) {
@@ -109,9 +109,8 @@ class FirebaseManager {
     
     func createHouse(completion: @escaping () -> ()) {
         let uuid = UUID().uuidString
-        
-        DBManager.instance.createDBHouse(houseID: uuid, houseData: ["listID": uuid, "chatID": uuid, "memberIDs":[FirebaseManager.instance.userID: FirebaseManager.instance.userID]])
-        DBManager.instance.createDBList(listID: uuid, listData: ["0": Constants.magicPi])
+        DBManager.instance.createDBHouse(houseID: uuid, houseData: ["listID": uuid, "chatID": uuid, "memberIDs":[FirebaseManager.instance.userID: FirebaseManager.instance.userID], "numMembers":Constants.firstMember])
+        DBManager.instance.createDBList(listID: uuid, listData: [:])
         DBManager.instance.REF_USERS.child(FirebaseManager.instance.userID).updateChildValues(["houseID" : uuid])
         
         populateUserInfo(completion: { () in
@@ -126,8 +125,11 @@ class FirebaseManager {
             DBManager.instance.REF_HOUSES.child(self.houseID).observeSingleEvent(of: .value, with: { (snapshot) in
                 let data = snapshot.value as! NSDictionary
                 let members = data["memberIDs"] as! NSMutableDictionary
+                let numMembers = data["numMembers"] as! NSNumber
                 members[Auth.auth().currentUser!.uid] = Auth.auth().currentUser!.uid
+                let newNumMembers = numMembers.intValue + 1
                 DBManager.instance.REF_HOUSES.child(self.houseID).child("memberIDs").setValue(members)
+                DBManager.instance.REF_HOUSES.child(self.houseID).child("numMembers").setValue(newNumMembers)
                 print(members)
                 completion()
             })
@@ -136,17 +138,39 @@ class FirebaseManager {
     
     //function for leaving a house
     func leaveHouse(completion: @escaping () -> ()) {
+        self.tempHouseID = self.houseID
         //remove user from house's member list
         DBManager.instance.REF_HOUSES.child(self.houseID).child("memberIDs").child(self.userID).removeValue()
-        //update user's house to empty string in firebase
-        DBManager.instance.REF_USERS.child(FirebaseManager.instance.userID).updateChildValues(["houseID" : ""])
-        //reset user's info locally
-        self.userBasedInfo = UserBasedInfo(firstName: self.userBasedInfo.firstName, lastName: self.userBasedInfo.lastName, houseID: "")
-        self.houseBasedInfo = nil
-        //remove observers
-        DBManager.instance.REF_LISTS.removeAllObservers()
-        self.isObserving = false
-        completion()
+        //update numMembers in firebase
+        removeUserFromHouse(completion: { () in
+            //update user's house to empty string in firebase
+            DBManager.instance.REF_USERS.child(FirebaseManager.instance.userID).updateChildValues(["houseID" : ""])
+            //reset user's info locally
+            self.userBasedInfo = UserBasedInfo(firstName: self.userBasedInfo.firstName, lastName: self.userBasedInfo.lastName, houseID: "")
+            self.houseBasedInfo = nil
+            //remove observers
+            DBManager.instance.REF_LISTS.removeAllObservers()
+            self.isObserving = false
+            completion()
+        })
+    }
+    
+    func removeUserFromHouse(completion: @escaping () -> ()) {
+        DBManager.instance.REF_HOUSES.child(self.tempHouseID).observeSingleEvent(of: .value, with:{ (snapshot) in
+            let data = snapshot.value as! NSDictionary
+            let numMembers = data["numMembers"] as! NSNumber
+            //if there are still members in the house, decrease numMembers
+            if numMembers.intValue != Constants.firstMember {
+                let newNumMembers = numMembers.intValue - 1
+                DBManager.instance.REF_HOUSES.child(self.tempHouseID).child("numMembers").setValue(newNumMembers)
+            }
+                //otherwise, there are no more members so delete the house and the list
+            else {
+                DBManager.instance.REF_HOUSES.child(self.tempHouseID).removeValue()
+                DBManager.instance.REF_LISTS.child(self.tempHouseID).removeValue()
+            }
+            completion()
+        })
     }
     
     func populateUserInfo(completion: @escaping () -> ()) {
@@ -169,7 +193,7 @@ class FirebaseManager {
             let firstName = userData?["first name"] as? String ?? ""
             let lastName = userData?["last name"] as? String ?? ""
             let houseID = userData?["houseID"] as? String ?? ""
-            
+
             self.userBasedInfo = UserBasedInfo(firstName: firstName, lastName: lastName, houseID: houseID)
             completion(!houseID.isEmpty)
         }
