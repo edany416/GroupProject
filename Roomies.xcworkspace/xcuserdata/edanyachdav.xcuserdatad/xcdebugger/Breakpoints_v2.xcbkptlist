@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Roomies/Model/FirebaseManager.swift"
-            timestampString = "580076377.380617"
+            timestampString = "580170050.185524"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "populateBasicInfo(completion:)"
             landmarkType = "7">
          </BreakpointContent>

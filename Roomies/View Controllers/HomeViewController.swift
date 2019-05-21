@@ -12,16 +12,22 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addItemView: UIView!
-    private var items: [String]?
+    //private var items: [String]?
+    
+    private var itemList: [ListItem]?
+    
+    
     
     var newItemName: String? {
         willSet(newItem) {
-            items!.append(newItem!)
+            //items!.append(newItem!)
             
-            //guard let key = DBManager.instance.REF_LISTS.child(FirebaseManager.instance.houseID).childByAutoId().key else { return }
-            //DBManager.instance.REF_LISTS.updateChildValues(["/\(FirebaseManager.instance.houseID)/items/\(key)": newItem as Any])
-            DBManager.instance.REF_LISTS.updateChildValues(["/\(FirebaseManager.instance.houseID)/items/\(newItem!)": newItem!])
-        
+            let userName = "\(FirebaseManager.instance.firstName) \(FirebaseManager.instance.lastName)"
+            let item = ListItem(name: newItem!, addedBy: userName)
+            itemList?.append(item)
+            
+            DBManager.instance.REF_LISTS.updateChildValues(["/\(FirebaseManager.instance.houseID)/items/\(newItem!)": ["name":newItem!, "addedBy":userName]])
+    
             tableView.reloadData()
         }
     }
@@ -35,7 +41,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         addItemView.addGestureRecognizer(tapGesture)
         
         if FirebaseManager.instance.userBelongsToHouse {
-            self.items = FirebaseManager.instance.productList
+            self.itemList = FirebaseManager.instance.productList
         }
     }
     
@@ -45,23 +51,28 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if FirebaseManager.instance.userBelongsToHouse && !FirebaseManager.instance.isObserving {
             attachObserver()
         } else {
-            if !FirebaseManager.instance.userBelongsToHouse && items != nil {
-                items = nil
+            if !FirebaseManager.instance.userBelongsToHouse && itemList != nil {
+                itemList = nil
             }
             tableView.reloadData()
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if items != nil {
-            return items!.count
+        if itemList != nil {
+            return itemList!.count
         }
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ItemCell
-        cell.itemName.text = items![indexPath.row]
+        let item = itemList![indexPath.row]
+        
+        cell.itemName.text = item.name
+        cell.addedBy.text = "Added by: \(item.addedBy) "
+        
+        
         cell.delegate = self
 
         return cell
@@ -70,7 +81,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func didTapCheckBox(for cell: ItemCell) {
         cell.delegate = nil
         let indexPath = tableView.indexPath(for: cell)
-        items!.remove(at: indexPath!.row)
+        
+        itemList?.remove(at: indexPath!.row)
+        
         tableView.reloadData()
         DBManager.instance.REF_LISTS.child("/\(FirebaseManager.instance.houseID)/items/\(cell.itemName.text!)").removeValue()
     }
@@ -86,12 +99,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let data = snapshot.value as? [String : Any] ?? [:]
             
             if data.isEmpty {
-                self.items = [String]()
+                self.itemList = [ListItem]()
             } else {
-                self.items = [String]()
+                self.itemList = [ListItem]()
                 
                 for (_ , value) in data {
-                    self.items!.append(value as! String)
+                    let item = value as! [String : String]
+                    let listItem = ListItem(name: item["name"]!, addedBy: item["addedBy"]!)
+                    self.itemList?.append(listItem)
                 }
             }
             self.tableView.reloadData()

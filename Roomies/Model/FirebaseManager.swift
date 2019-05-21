@@ -21,7 +21,7 @@ private struct UserBasedInfo {
 }
 
 struct HouseBasedInfo {
-    var products: [String]
+    var products: [ListItem]
 }
 
 class FirebaseManager {
@@ -30,13 +30,21 @@ class FirebaseManager {
     private var houseBasedInfo: HouseBasedInfo?
     private var userBasedInfo: UserBasedInfo!
     
+    var firstName: String {
+        return userBasedInfo.firstName
+    }
+    
+    var lastName: String {
+        return userBasedInfo.lastName
+    }
+    
     var userIsLoggedIn: Bool {
         get { return Auth.auth().currentUser != nil }
     }
     var userBelongsToHouse: Bool {
         get { return houseBasedInfo != nil }
     }
-    var productList: [String] {
+    var productList: [ListItem] {
         get { return houseBasedInfo!.products }
     }
     var houseID: String {
@@ -201,17 +209,20 @@ class FirebaseManager {
     
     private func populateHouseBasedInfo(completion: @escaping ()->()) {
         print("Populating house info")
-        DBManager.instance.REF_LISTS.child(userBasedInfo.houseID).observeSingleEvent(of: .value, with: { (snapshot) in
+        DBManager.instance.REF_LISTS.child(userBasedInfo.houseID).child("items").observeSingleEvent(of: .value, with: { (snapshot) in
             let data = snapshot.value as? [String : Any] ?? [:]
             
             if data.isEmpty {
-                self.houseBasedInfo = HouseBasedInfo(products: [String]())
+                self.houseBasedInfo = HouseBasedInfo(products: [ListItem]())    
             } else {
-                var dataArray = [String]()
-                let items = data["items"] as? [String: Any] ?? [:]
-                for (_ , value) in items {
-                    dataArray.append(value as! String)
+                
+                var dataArray = [ListItem]()
+                for (_ , value) in data {
+                    let item = value as! [String : String]
+                    let listItem = ListItem(name: item["name"]!, addedBy: item["addedBy"]!)
+                    dataArray.append(listItem)
                 }
+                
                 self.houseBasedInfo = HouseBasedInfo(products: dataArray)
             }
             

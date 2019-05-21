@@ -19,6 +19,7 @@
 		8C823F10228C90260057B8D2 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C823F0F228C90260057B8D2 /* FirebaseManager.swift */; };
 		8C823F12228CC8DE0057B8D2 /* JoinHouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C823F11228CC8DE0057B8D2 /* JoinHouseViewController.swift */; };
 		8C823F142290D3A60057B8D2 /* Notes.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 8C823F132290D3A60057B8D2 /* Notes.rtf */; };
+		8C94E67E2294A7D100BF2397 /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C94E67D2294A7D100BF2397 /* ListItem.swift */; };
 		8CC4B28022812A3D00D1760E /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC4B27F22812A3D00D1760E /* TestViewController.swift */; };
 		8CC4B2822281361700D1760E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC4B2812281361700D1760E /* HomeViewController.swift */; };
 		9F4851FDF244BE6FD9671FF6 /* Pods_RoomiesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CDD0182BF90EB048977580 /* Pods_RoomiesUITests.framework */; };
@@ -73,6 +74,7 @@
 		8C823F0F228C90260057B8D2 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		8C823F11228CC8DE0057B8D2 /* JoinHouseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinHouseViewController.swift; sourceTree = "<group>"; };
 		8C823F132290D3A60057B8D2 /* Notes.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Notes.rtf; sourceTree = "<group>"; };
+		8C94E67D2294A7D100BF2397 /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
 		8CC4B27F22812A3D00D1760E /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		8CC4B2812281361700D1760E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B788160522826EDD001FA227 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				B788160522826EDD001FA227 /* DBManager.swift */,
 				8C3E4A76227E752F00AD2AA8 /* SFTextFieldProps.swift */,
 				8C3E4A78227E760200AD2AA8 /* UnderlinedTextField.swift */,
+				8C94E67D2294A7D100BF2397 /* ListItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				8C621EA42289F20F009DB88A /* CheckBoxView.swift in Sources */,
 				8CC4B2822281361700D1760E /* HomeViewController.swift in Sources */,
 				8C7E9C5B2288E31C00C0B554 /* ItemCell.swift in Sources */,
+				8C94E67E2294A7D100BF2397 /* ListItem.swift in Sources */,
 				D3E0CF202278D00D006AF3E6 /* SignUpViewController.swift in Sources */,
 				8C3E4A77227E752F00AD2AA8 /* SFTextFieldProps.swift in Sources */,
 				8C621EA22288EE53009DB88A /* AddItemController.swift in Sources */,
