@@ -156,7 +156,7 @@ class FirebaseManager {
     }
     
     func removeUserFromHouse(completion: @escaping () -> ()) {
-        DBManager.instance.REF_HOUSES.child(self.tempHouseID).observeSingleEvent(of: .value, with:{ (snapshot) in
+        DBManager.instance.REF_HOUSES.child(self.tempHouseID).observeSingleEvent(of: .value, with: { (snapshot) in
             let data = snapshot.value as! NSDictionary
             let numMembers = data["numMembers"] as! NSNumber
             //if there are still members in the house, decrease numMembers
@@ -188,7 +188,7 @@ class FirebaseManager {
     
     private func populateBasicInfo(completion:@escaping (Bool)->()) {
         print("Populating user info")
-        DBManager.instance.REF_USERS.child(FirebaseManager.instance.userID).observeSingleEvent(of: .value) { (snapshot) in
+        DBManager.instance.REF_USERS.child(FirebaseManager.instance.userID).observeSingleEvent(of: .value, with: { (snapshot) in
             let userData = snapshot.value as? NSDictionary
             let firstName = userData?["first name"] as? String ?? ""
             let lastName = userData?["last name"] as? String ?? ""
@@ -196,25 +196,36 @@ class FirebaseManager {
 
             self.userBasedInfo = UserBasedInfo(firstName: firstName, lastName: lastName, houseID: houseID)
             completion(!houseID.isEmpty)
-        }
+        })
     }
     
     private func populateHouseBasedInfo(completion: @escaping ()->()) {
         print("Populating house info")
         DBManager.instance.REF_LISTS.child(userBasedInfo.houseID).observeSingleEvent(of: .value, with: { (snapshot) in
-            let data = snapshot.value as! NSDictionary
+            let data = snapshot.value as? [String : Any] ?? [:]
             
-            if data["items"] is String {
+            if data.isEmpty {
                 self.houseBasedInfo = HouseBasedInfo(products: [String]())
             } else {
-                let items = data["items"] as! NSDictionary
                 var dataArray = [String]()
-                
+                let items = data["items"] as? [String: Any] ?? [:]
                 for (_ , value) in items {
                     dataArray.append(value as! String)
                 }
                 self.houseBasedInfo = HouseBasedInfo(products: dataArray)
             }
+            
+//            if data["items"] is String {
+//                self.houseBasedInfo = HouseBasedInfo(products: [String]())
+//            } else {
+//                let items = data["items"] as! NSDictionary
+//                var dataArray = [String]()
+//
+//                for (_ , value) in items {
+//                    dataArray.append(value as! String)
+//                }
+//                self.houseBasedInfo = HouseBasedInfo(products: dataArray)
+//            }
             completion()
         })
     }

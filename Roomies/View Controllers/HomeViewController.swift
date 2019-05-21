@@ -18,9 +18,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         willSet(newItem) {
             items!.append(newItem!)
             
-            guard let key = DBManager.instance.REF_LISTS.child(FirebaseManager.instance.houseID).childByAutoId().key else { return }
-            DBManager.instance.REF_LISTS.updateChildValues(["/\(FirebaseManager.instance.houseID)/items/\(key)": newItem as Any])
-            
+            //guard let key = DBManager.instance.REF_LISTS.child(FirebaseManager.instance.houseID).childByAutoId().key else { return }
+            //DBManager.instance.REF_LISTS.updateChildValues(["/\(FirebaseManager.instance.houseID)/items/\(key)": newItem as Any])
+            DBManager.instance.REF_LISTS.updateChildValues(["/\(FirebaseManager.instance.houseID)/items/\(newItem!)": newItem!])
+        
             tableView.reloadData()
         }
     }
@@ -35,7 +36,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if FirebaseManager.instance.userBelongsToHouse {
             self.items = FirebaseManager.instance.productList
-            
         }
     }
     
@@ -44,12 +44,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if FirebaseManager.instance.userBelongsToHouse && !FirebaseManager.instance.isObserving {
             attachObserver()
-        }
-        else {
-            if items != nil {
+        } else {
+            if !FirebaseManager.instance.userBelongsToHouse && items != nil {
                 items = nil
-                tableView.reloadData()
             }
+            tableView.reloadData()
         }
     }
     
@@ -68,10 +67,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
-    func didTapCheckBox(for cell: UITableViewCell) {
-        print("check box was tapped")
-         DBManager.instance.REF_LISTS.up
-        
+    func didTapCheckBox(for cell: ItemCell) {
+        cell.delegate = nil
+        let indexPath = tableView.indexPath(for: cell)
+        items!.remove(at: indexPath!.row)
+        tableView.reloadData()
+        DBManager.instance.REF_LISTS.child("/\(FirebaseManager.instance.houseID)/items/\(cell.itemName.text!)").removeValue()
     }
     
     @objc private func addItemViewTapped() {
@@ -88,6 +89,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.items = [String]()
             } else {
                 self.items = [String]()
+                
                 for (_ , value) in data {
                     self.items!.append(value as! String)
                 }
@@ -95,18 +97,5 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.tableView.reloadData()
         })
         FirebaseManager.instance.isObserving = true
-    }
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    }    
 }

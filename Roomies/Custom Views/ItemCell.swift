@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ItemCellDelegate {
-    func didTapCheckBox(for cell: UITableViewCell)
+    func didTapCheckBox(for cell: ItemCell)
 }
 
 class ItemCell: UITableViewCell {
