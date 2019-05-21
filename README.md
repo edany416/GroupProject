@@ -38,8 +38,8 @@ Group Project - README Template
 * [x]User can log out of their account
 * [x]User can create a house for others to join.
 * [x]User can add a product to the shopping checklist
-* User can request to join a house.
-* User can check off a product they purchsed
+* [x]User can join a house.
+* [x]User can check off a product they purchsed
 * User can see what products from the checklist have been marked as purchased
 * User can send a message to other house mates
 * User can recieve a message from other house mates
@@ -107,4 +107,4 @@ Group Project - README Template
     * (Create/POST) Create a new house
     
 ## GIF
-<img src='http://g.recordit.co/U4hfWsykEK.gif' title='Milestone 1 Video Walkthrough' width='' alt='Milestone 2 Video Walkthrough' />
+<img src='http://g.recordit.co/02OFPpogEd.gif' title='Milestone 3 Video Walkthrough' width='' alt='Milestone 3 Video Walkthrough' />
