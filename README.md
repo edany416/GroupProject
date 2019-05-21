@@ -107,4 +107,4 @@ Group Project - README Template
     * (Create/POST) Create a new house
     
 ## GIF
-<img src='http://g.recordit.co/v1TlgoMxe4.gif' title='Milestone 3 Video Walkthrough' width='' alt='Milestone 3 Video Walkthrough' />
+<img src='http://g.recordit.co/02OFPpogEd.gif' title='Milestone 3 Video Walkthrough' width='' alt='Milestone 3 Video Walkthrough' />
