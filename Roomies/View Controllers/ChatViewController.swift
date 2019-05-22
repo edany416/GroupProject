@@ -96,6 +96,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         addMessageController.presetAlert(from: self)
     }
    
+    func sortsMessagesByTime(this: MessageItem, that: MessageItem) -> Bool{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM.dd HH:mm"
+        
+        let firstTime = dateFormatter.date(from: this.timeSent) as! Date
+        let secondTime = dateFormatter.date(from: that.timeSent) as! Date
+        
+        return firstTime < secondTime
+    }
+    
     private func attachObserver() {
         DBManager.instance.REF_CHATS.child(FirebaseManager.instance.houseID).child("chats").observe(.value, with: {(snapshot) -> Void in
             print("observer call back called")
@@ -111,9 +121,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let messageItem = MessageItem(message: chat["message"]!, sentBy: chat["sentBy"]!, timeSent: chat["timeSent"]!)
                     self.messageList?.append(messageItem)
                 }
+                self.messageList?.sort(by: self.sortsMessagesByTime)
             }
             self.tableView.reloadData()
         })
         FirebaseManager.instance.isObservingChat = true
     }
+    
 }
