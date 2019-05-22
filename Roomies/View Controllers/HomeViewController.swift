@@ -25,9 +25,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let userName = "\(FirebaseManager.instance.firstName) \(FirebaseManager.instance.lastName)"
             let item = ListItem(name: newItem!, addedBy: userName)
             itemList?.append(item)
-            
-            DBManager.instance.REF_LISTS.updateChildValues(["/\(FirebaseManager.instance.houseID)/items/\(newItem!)": ["name":newItem!, "addedBy":userName]])
-    
+            if FirebaseManager.instance.userBelongsToHouse {
+                DBManager.instance.REF_LISTS.updateChildValues(["/\(FirebaseManager.instance.houseID)/items/\(newItem!)": ["name":newItem!, "addedBy":userName]])
+            }
             tableView.reloadData()
         }
     }
