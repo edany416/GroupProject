@@ -21,29 +21,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JBg-JY-l7j">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="440"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-pavilion-90" translatesAutoresizingMaskIntoConstraints="NO" id="ygq-yj-zgJ">
-                                        <rect key="frame" x="88" y="129" width="199" height="220"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2019-05-22 at 3.22.32 PM" translatesAutoresizingMaskIntoConstraints="NO" id="PR9-dD-M3V">
+                                        <rect key="frame" x="67" y="156" width="240" height="128"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="199" id="P4W-2h-z5R"/>
-                                            <constraint firstAttribute="height" constant="220" id="oFP-VD-H5e"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-bulleted-list-90" translatesAutoresizingMaskIntoConstraints="NO" id="RCl-ps-xj3">
-                                        <rect key="frame" x="96" y="210" width="183" height="96"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="183" id="8Rw-0h-bve"/>
-                                            <constraint firstAttribute="height" constant="96" id="q8X-Ug-mZ2"/>
+                                            <constraint firstAttribute="height" constant="128" id="7eE-gW-Blp"/>
+                                            <constraint firstAttribute="width" constant="240" id="d6i-EJ-Koi"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="RCl-ps-xj3" firstAttribute="top" secondItem="JBg-JY-l7j" secondAttribute="top" constant="210" id="8DC-vj-ku1"/>
-                                    <constraint firstItem="ygq-yj-zgJ" firstAttribute="top" secondItem="JBg-JY-l7j" secondAttribute="top" constant="129" id="Mx1-bm-9m8"/>
-                                    <constraint firstItem="RCl-ps-xj3" firstAttribute="leading" secondItem="JBg-JY-l7j" secondAttribute="leading" constant="96" id="U4I-hz-4Ic"/>
-                                    <constraint firstAttribute="trailing" secondItem="ygq-yj-zgJ" secondAttribute="trailing" constant="88" id="cuq-df-FaB"/>
-                                    <constraint firstItem="ygq-yj-zgJ" firstAttribute="leading" secondItem="JBg-JY-l7j" secondAttribute="leading" constant="88" id="guW-en-Zpj"/>
-                                    <constraint firstAttribute="trailing" secondItem="RCl-ps-xj3" secondAttribute="trailing" constant="96" id="ocg-OW-rOh"/>
+                                    <constraint firstItem="PR9-dD-M3V" firstAttribute="top" secondItem="JBg-JY-l7j" secondAttribute="top" constant="156" id="paf-Ln-3jm"/>
+                                    <constraint firstItem="PR9-dD-M3V" firstAttribute="leading" secondItem="JBg-JY-l7j" secondAttribute="leading" constant="67" id="rPi-5Y-vMA"/>
+                                    <constraint firstAttribute="trailing" secondItem="PR9-dD-M3V" secondAttribute="trailing" constant="68" id="rvl-u3-Eh3"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpB-NI-1w6">
@@ -799,14 +789,13 @@
     <resources>
         <image name="ChatIcon" width="30" height="30"/>
         <image name="PlusIcon" width="30" height="30"/>
+        <image name="Screen Shot 2019-05-22 at 3.22.32 PM" width="120" height="120"/>
         <image name="SettingsIcon" width="30" height="30"/>
         <image name="TodoListIcon" width="30" height="30"/>
-        <image name="icons8-bulleted-list-90" width="90" height="90"/>
-        <image name="icons8-pavilion-90" width="90" height="90"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IjU-Y0-a5l"/>
-        <segue reference="lfP-D1-Ad2"/>
+        <segue reference="kzn-6P-uXE"/>
+        <segue reference="dGz-ud-cCM"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
