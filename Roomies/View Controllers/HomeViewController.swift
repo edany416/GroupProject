@@ -19,12 +19,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var newItemName: String? {
         willSet(newItem) {
+            let currentDate = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM.dd HH:mm:ss"
+            let dateString = dateFormatter.string(from: currentDate)
             
             let userName = "\(FirebaseManager.instance.firstName) \(FirebaseManager.instance.lastName)"
-            let item = ListItem(name: newItem!, addedBy: userName)
+            let item = ListItem(name: newItem!, addedBy: userName, timeAdded: dateString)
             itemList?.append(item)
             if FirebaseManager.instance.userBelongsToHouse {
-                DBManager.instance.REF_LISTS.updateChildValues(["/\(FirebaseManager.instance.houseID)/items/\(newItem!)": ["name":newItem!, "addedBy":userName]])
+                DBManager.instance.REF_LISTS.updateChildValues(["/\(FirebaseManager.instance.houseID)/items/\(newItem!)": ["name":newItem!, "addedBy":userName, "timeAdded":dateString]])
             }
             tableView.reloadData()
         }
@@ -91,6 +95,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         addItemController.presetAlert(from: self)
     }
     
+    func sortsItemsByTime(this: ListItem, that: ListItem) -> Bool{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM.dd HH:mm:ss"
+        
+        let firstTime = dateFormatter.date(from: this.timeAdded) as! Date
+        let secondTime = dateFormatter.date(from: that.timeAdded) as! Date
+        
+        return firstTime < secondTime
+    }
+    
     private func attachObserver() {
         DBManager.instance.REF_LISTS.child(FirebaseManager.instance.houseID).child("items").observe(.value, with: {(snapshot) -> Void in
             print("observer call back called")
@@ -103,9 +117,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 for (_ , value) in data {
                     let item = value as! [String : String]
-                    let listItem = ListItem(name: item["name"]!, addedBy: item["addedBy"]!)
+                    let listItem = ListItem(name: item["name"]!, addedBy: item["addedBy"]!, timeAdded: item["timeAdded"]!)
                     self.itemList?.append(listItem)
                 }
+                self.itemList?.sort(by: self.sortsItemsByTime)
             }
             self.tableView.reloadData()
         })

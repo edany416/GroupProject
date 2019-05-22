@@ -231,7 +231,7 @@ class FirebaseManager {
                 var dataArray = [ListItem]()
                 for (_ , value) in data {
                     let item = value as! [String : String]
-                    let listItem = ListItem(name: item["name"]!, addedBy: item["addedBy"]!)
+                    let listItem = ListItem(name: item["name"]!, addedBy: item["addedBy"]!, timeAdded: item["timeAdded"]!)
                     dataArray.append(listItem)
                 }
                 

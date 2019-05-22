@@ -11,4 +11,5 @@ import Foundation
 struct ListItem {
     var name: String
     var addedBy: String
+    var timeAdded: String
 }
