@@ -26,6 +26,10 @@
 		B2A60F53DD6DA67D3393E56F /* Pods_Roomies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 661E78FA141627CD887641DC /* Pods_Roomies.framework */; };
 		B788160622826EDD001FA227 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B788160522826EDD001FA227 /* DBManager.swift */; };
 		B788160822850896001FA227 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B788160722850896001FA227 /* SettingsViewController.swift */; };
+		B7B9015C22952D85009C0651 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B9015B22952D85009C0651 /* ChatViewController.swift */; };
+		B7B9015E22953109009C0651 /* MessageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B9015D22953109009C0651 /* MessageItem.swift */; };
+		B7B9016022953755009C0651 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B9015F22953755009C0651 /* MessageCell.swift */; };
+		B7B90162229541FB009C0651 /* AddMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B90161229541FB009C0651 /* AddMessageController.swift */; };
 		D3E0CEE92278C626006AF3E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0CEE82278C626006AF3E6 /* AppDelegate.swift */; };
 		D3E0CEEE2278C626006AF3E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3E0CEEC2278C626006AF3E6 /* Main.storyboard */; };
 		D3E0CEF02278C627006AF3E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E0CEEF2278C627006AF3E6 /* Assets.xcassets */; };
@@ -79,6 +83,10 @@
 		8CC4B2812281361700D1760E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B788160522826EDD001FA227 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		B788160722850896001FA227 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B7B9015B22952D85009C0651 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		B7B9015D22953109009C0651 /* MessageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageItem.swift; sourceTree = "<group>"; };
+		B7B9015F22953755009C0651 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		B7B90161229541FB009C0651 /* AddMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMessageController.swift; sourceTree = "<group>"; };
 		D3E0CEE52278C625006AF3E6 /* Roomies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roomies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E0CEE82278C626006AF3E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3E0CEED2278C626006AF3E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -141,6 +149,7 @@
 				8C3E4A76227E752F00AD2AA8 /* SFTextFieldProps.swift */,
 				8C3E4A78227E760200AD2AA8 /* UnderlinedTextField.swift */,
 				8C94E67D2294A7D100BF2397 /* ListItem.swift */,
+				B7B9015D22953109009C0651 /* MessageItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -225,6 +234,7 @@
 				8CC4B2812281361700D1760E /* HomeViewController.swift */,
 				B788160722850896001FA227 /* SettingsViewController.swift */,
 				8C823F11228CC8DE0057B8D2 /* JoinHouseViewController.swift */,
+				B7B9015B22952D85009C0651 /* ChatViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -236,6 +246,8 @@
 				8C621EA12288EE53009DB88A /* AddItemController.swift */,
 				8C621EA32289F20F009DB88A /* CheckBoxView.swift */,
 				8C621EA5228A22CB009DB88A /* RoundedButton.swift */,
+				B7B9015F22953755009C0651 /* MessageCell.swift */,
+				B7B90161229541FB009C0651 /* AddMessageController.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -479,6 +491,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C1817B62278F12C00D71F67 /* LogInViewController.swift in Sources */,
+				B7B9016022953755009C0651 /* MessageCell.swift in Sources */,
 				8C621EA6228A22CB009DB88A /* RoundedButton.swift in Sources */,
 				D3E0CEE92278C626006AF3E6 /* AppDelegate.swift in Sources */,
 				B788160822850896001FA227 /* SettingsViewController.swift in Sources */,
@@ -491,9 +504,12 @@
 				8CC4B2822281361700D1760E /* HomeViewController.swift in Sources */,
 				8C7E9C5B2288E31C00C0B554 /* ItemCell.swift in Sources */,
 				8C94E67E2294A7D100BF2397 /* ListItem.swift in Sources */,
+				B7B9015E22953109009C0651 /* MessageItem.swift in Sources */,
 				D3E0CF202278D00D006AF3E6 /* SignUpViewController.swift in Sources */,
 				8C3E4A77227E752F00AD2AA8 /* SFTextFieldProps.swift in Sources */,
 				8C621EA22288EE53009DB88A /* AddItemController.swift in Sources */,
+				B7B9015C22952D85009C0651 /* ChatViewController.swift in Sources */,
+				B7B90162229541FB009C0651 /* AddMessageController.swift in Sources */,
 				8C823F10228C90260057B8D2 /* FirebaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

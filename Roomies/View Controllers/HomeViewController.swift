@@ -12,7 +12,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addItemView: UIView!
-    //private var items: [String]?
     
     private var itemList: [ListItem]?
     
@@ -20,7 +19,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var newItemName: String? {
         willSet(newItem) {
-            //items!.append(newItem!)
             
             let userName = "\(FirebaseManager.instance.firstName) \(FirebaseManager.instance.lastName)"
             let item = ListItem(name: newItem!, addedBy: userName)

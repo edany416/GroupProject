@@ -22,6 +22,7 @@ private struct UserBasedInfo {
 
 struct HouseBasedInfo {
     var products: [ListItem]
+    var chats: [MessageItem]
 }
 
 class FirebaseManager {
@@ -47,6 +48,9 @@ class FirebaseManager {
     var productList: [ListItem] {
         get { return houseBasedInfo!.products }
     }
+    var chatList: [MessageItem] {
+        get { return houseBasedInfo!.chats}
+    }
     var houseID: String {
         get { return userBasedInfo.houseID }
     }
@@ -55,6 +59,9 @@ class FirebaseManager {
     }
     var tempHouseID = ""
     var isObserving = false
+    var isObservingChat = false
+    var tempProducts = [ListItem]()
+    var tempChats = [MessageItem]()
     
     func createUser(withFirstName firstName: String, lastName: String, email: String, password: String, completion:@escaping (Bool) -> ()) {
         Auth.auth().createUser(withEmail: email, password: password) { (authDataResult, error) in
@@ -97,7 +104,9 @@ class FirebaseManager {
         userBasedInfo = nil
         houseBasedInfo = nil
         isObserving = false
+        isObservingChat = false
         DBManager.instance.REF_LISTS.removeAllObservers()
+        DBManager.instance.REF_CHATS.removeAllObservers()
     }
     
     func logOut() {
@@ -119,6 +128,7 @@ class FirebaseManager {
         let uuid = UUID().uuidString
         DBManager.instance.createDBHouse(houseID: uuid, houseData: ["listID": uuid, "chatID": uuid, "memberIDs":[FirebaseManager.instance.userID: FirebaseManager.instance.userID], "numMembers":Constants.firstMember])
         DBManager.instance.createDBList(listID: uuid, listData: [:])
+        DBManager.instance.createDBChat(chatID: uuid, chatData: [:])
         DBManager.instance.REF_USERS.child(FirebaseManager.instance.userID).updateChildValues(["houseID" : uuid])
         
         populateUserInfo(completion: { () in
@@ -159,6 +169,7 @@ class FirebaseManager {
             //remove observers
             DBManager.instance.REF_LISTS.removeAllObservers()
             self.isObserving = false
+            self.isObservingChat = false
             completion()
         })
     }
@@ -172,10 +183,11 @@ class FirebaseManager {
                 let newNumMembers = numMembers.intValue - 1
                 DBManager.instance.REF_HOUSES.child(self.tempHouseID).child("numMembers").setValue(newNumMembers)
             }
-                //otherwise, there are no more members so delete the house and the list
+                //otherwise, there are no more members so delete the house and the list and the chat
             else {
                 DBManager.instance.REF_HOUSES.child(self.tempHouseID).removeValue()
                 DBManager.instance.REF_LISTS.child(self.tempHouseID).removeValue()
+                DBManager.instance.REF_CHATS.child(self.tempHouseID).removeValue()
             }
             completion()
         })
@@ -213,7 +225,7 @@ class FirebaseManager {
             let data = snapshot.value as? [String : Any] ?? [:]
             
             if data.isEmpty {
-                self.houseBasedInfo = HouseBasedInfo(products: [ListItem]())    
+                self.tempProducts = [ListItem]()
             } else {
                 
                 var dataArray = [ListItem]()
@@ -223,22 +235,26 @@ class FirebaseManager {
                     dataArray.append(listItem)
                 }
                 
-                self.houseBasedInfo = HouseBasedInfo(products: dataArray)
+                self.tempProducts = dataArray
             }
-            
-//            if data["items"] is String {
-//                self.houseBasedInfo = HouseBasedInfo(products: [String]())
-//            } else {
-//                let items = data["items"] as! NSDictionary
-//                var dataArray = [String]()
-//
-//                for (_ , value) in items {
-//                    dataArray.append(value as! String)
-//                }
-//                self.houseBasedInfo = HouseBasedInfo(products: dataArray)
-//            }
-            completion()
         })
+        DBManager.instance.REF_CHATS.child(userBasedInfo.houseID).child("chats").observeSingleEvent(of: .value, with: { (snapshot) in
+            let data = snapshot.value as? [String : Any] ?? [:]
+            
+            if data.isEmpty {
+                self.tempChats = [MessageItem]()
+            } else {
+                var chatArray = [MessageItem]()
+                for (_ , value) in data {
+                    let chat = value as! [String : String]
+                    let messageItem = MessageItem(message: chat["message"]!, sentBy: chat["sentBy"]!)
+                    chatArray.append(messageItem)
+                }
+                self.tempChats = chatArray
+            }
+        })
+        
+        self.houseBasedInfo = HouseBasedInfo(products: tempProducts, chats: tempChats)
+        completion()
     }
-    
 }

@@ -49,4 +49,8 @@ class DBManager {
     func createDBList(listID: String, listData: Dictionary<String, Any>) {
         DBManager.instance.REF_LISTS.updateChildValues(["/\(listID)/items": "items"])
     }
+    
+    func createDBChat(chatID: String, chatData: Dictionary<String, Any>) {
+        DBManager.instance.REF_CHATS.updateChildValues(["/\(chatID)/chats": "chats"])
+    }
 }
