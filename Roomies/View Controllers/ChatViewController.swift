@@ -14,7 +14,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     
     private var messageList: [MessageItem]?
-    
+    private var fullName = "\(FirebaseManager.instance.firstName) \(FirebaseManager.instance.lastName)"
     
     var newMessageText: String? {
         willSet(newMessage) {
@@ -25,6 +25,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             if FirebaseManager.instance.userBelongsToHouse {
                 DBManager.instance.REF_CHATS.updateChildValues(["/\(FirebaseManager.instance.houseID)/chats/\(newMessage!)": ["message":newMessage!, "sentBy":userName]])
             }
+            fullName = userName
             tableView.reloadData()
         }
     }
@@ -71,7 +72,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         cell.message.text = messageItem.message
         cell.sentBy.text = messageItem.sentBy
-       
+        
+        if messageItem.sentBy == fullName {
+            cell.message.textAlignment = .right
+            cell.sentBy.textAlignment = .right
+        } else {
+            cell.message.textAlignment = .left
+            cell.message.textAlignment = .left
+        }
+        
         cell.delegate = self
         return cell
     }
