@@ -18,12 +18,18 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var newMessageText: String? {
         willSet(newMessage) {
+            let currentDate = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM.dd HH:mm"
+            let dateString = dateFormatter.string(from: currentDate)
+            
+//            print(dateString)
             
             let userName = "\(FirebaseManager.instance.firstName) \(FirebaseManager.instance.lastName)"
-            let message = MessageItem(message: newMessage!, sentBy: userName)
+            let message = MessageItem(message: newMessage!, sentBy: userName, timeSent: dateString)
             messageList?.append(message)
             if FirebaseManager.instance.userBelongsToHouse {
-                DBManager.instance.REF_CHATS.updateChildValues(["/\(FirebaseManager.instance.houseID)/chats/\(newMessage!)": ["message":newMessage!, "sentBy":userName]])
+                DBManager.instance.REF_CHATS.updateChildValues(["/\(FirebaseManager.instance.houseID)/chats/\(newMessage!)":["message":newMessage, "sentBy":userName, "timeSent":dateString]])
             }
             fullName = userName
             tableView.reloadData()
@@ -71,14 +77,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let messageItem = messageList![indexPath.row]
         
         cell.message.text = messageItem.message
-        cell.sentBy.text = messageItem.sentBy
+        cell.sentBy.text = "\(messageItem.sentBy) at \(messageItem.timeSent)"
         
         if messageItem.sentBy == fullName {
             cell.message.textAlignment = .right
             cell.sentBy.textAlignment = .right
         } else {
             cell.message.textAlignment = .left
-            cell.message.textAlignment = .left
+            cell.sentBy.textAlignment = .left
         }
         
         cell.delegate = self
@@ -102,7 +108,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 for (_ , value) in data {
                     let chat = value as! [String : String]
-                    let messageItem = MessageItem(message: chat["message"]!, sentBy: chat["sentBy"]!)
+                    let messageItem = MessageItem(message: chat["message"]!, sentBy: chat["sentBy"]!, timeSent: chat["timeSent"]!)
                     self.messageList?.append(messageItem)
                 }
             }

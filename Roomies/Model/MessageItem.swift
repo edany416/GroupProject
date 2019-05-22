@@ -11,4 +11,5 @@ import Foundation
 struct MessageItem {
     var message: String
     var sentBy: String
+    var timeSent: String
 }

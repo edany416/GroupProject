@@ -247,7 +247,7 @@ class FirebaseManager {
                 var chatArray = [MessageItem]()
                 for (_ , value) in data {
                     let chat = value as! [String : String]
-                    let messageItem = MessageItem(message: chat["message"]!, sentBy: chat["sentBy"]!)
+                    let messageItem = MessageItem(message: chat["message"]!, sentBy: chat["sentBy"]!, timeSent: chat["timeSent"]!)
                     chatArray.append(messageItem)
                 }
                 self.tempChats = chatArray
