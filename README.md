@@ -39,10 +39,10 @@ Group Project - README Template
 * [x]User can create a house for others to join.
 * [x]User can add a product to the shopping checklist
 * [x]User can join a house.
-* [x]User can check off a product they purchsed
+* [x]User can check off a product they purchased
 * User can see what products from the checklist have been marked as purchased
-* User can send a message to other house mates
-* User can recieve a message from other house mates
+* [x]User can send a message to other house mates
+* [x]User can recieve a message from other house mates
 
 
 **Optional Nice-to-have Stories**
