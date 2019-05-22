@@ -20,7 +20,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         willSet(newMessage) {
             let currentDate = Date()
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM.dd HH:mm"
+            dateFormatter.dateFormat = "MM.dd HH:mm:ss"
             let dateString = dateFormatter.string(from: currentDate)
             
 //            print(dateString)
@@ -98,7 +98,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
    
     func sortsMessagesByTime(this: MessageItem, that: MessageItem) -> Bool{
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM.dd HH:mm"
+        dateFormatter.dateFormat = "MM.dd HH:mm:ss"
         
         let firstTime = dateFormatter.date(from: this.timeSent) as! Date
         let secondTime = dateFormatter.date(from: that.timeSent) as! Date
