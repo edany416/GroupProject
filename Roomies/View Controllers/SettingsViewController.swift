@@ -21,8 +21,8 @@ class SettingsViewController: UIViewController, MFMessageComposeViewControllerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        logoutButton.backgroundColor = UIColor.red
-        logoutButton.outlineColor = UIColor.red
+        logoutButton.backgroundColor = UIColor.black
+        logoutButton.outlineColor = UIColor.black
         updateLayout()
     }
     
