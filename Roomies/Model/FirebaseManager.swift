@@ -237,24 +237,29 @@ class FirebaseManager {
                 
                 self.tempProducts = dataArray
             }
-        })
-        DBManager.instance.REF_CHATS.child(userBasedInfo.houseID).child("chats").observeSingleEvent(of: .value, with: { (snapshot) in
-            let data = snapshot.value as? [String : Any] ?? [:]
             
-            if data.isEmpty {
-                self.tempChats = [MessageItem]()
-            } else {
-                var chatArray = [MessageItem]()
-                for (_ , value) in data {
-                    let chat = value as! [String : String]
-                    let messageItem = MessageItem(message: chat["message"]!, sentBy: chat["sentBy"]!, timeSent: chat["timeSent"]!)
-                    chatArray.append(messageItem)
+            DBManager.instance.REF_CHATS.child(self.userBasedInfo.houseID).child("chats").observeSingleEvent(of: .value, with: { (snapshot) in
+                let data = snapshot.value as? [String : Any] ?? [:]
+                
+                if data.isEmpty {
+                    self.tempChats = [MessageItem]()
+                } else {
+                    var chatArray = [MessageItem]()
+                    for (_ , value) in data {
+                        let chat = value as! [String : String]
+                        let messageItem = MessageItem(message: chat["message"]!, sentBy: chat["sentBy"]!, timeSent: chat["timeSent"]!)
+                        chatArray.append(messageItem)
+                    }
+                    self.tempChats = chatArray
                 }
-                self.tempChats = chatArray
-            }
+                
+                self.houseBasedInfo = HouseBasedInfo(products: self.tempProducts, chats: self.tempChats)
+                completion()
+            })
+            
         })
         
-        self.houseBasedInfo = HouseBasedInfo(products: tempProducts, chats: tempChats)
-        completion()
+        
+        
     }
 }

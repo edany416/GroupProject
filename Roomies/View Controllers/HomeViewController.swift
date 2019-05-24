@@ -12,6 +12,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addItemView: UIView!
+    @IBOutlet weak var addButton: UIView!
+    private var labelRef: UILabel?
     
     private var itemList: [ListItem]?
     
@@ -40,6 +42,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         tableView.delegate = self
         
+        let x = self.view.bounds.midX
+        let y = self.view.bounds.midY
+        let width = 200
+        let height = 100
+        let rect = CGRect(x: 0, y: 0, width: width, height: height)
+        let label = UILabel(frame: rect)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        //label.textColor = UIColor.lightText
+        label.text = "Go to settings and create or join a house to get started"
+        label.center = CGPoint(x: x, y: y)
+        self.view.addSubview(label)
+        
+        labelRef = label
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addItemViewTapped))
         addItemView.addGestureRecognizer(tapGesture)
         
@@ -48,9 +65,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        updateLayout()
         if FirebaseManager.instance.userBelongsToHouse && !FirebaseManager.instance.isObserving {
             attachObserver()
         } else {
@@ -61,10 +79,29 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    private func updateLayout() {
+        if !FirebaseManager.instance.userBelongsToHouse {
+            tableView.isHidden = true
+            addButton.isHidden = true
+            labelRef!.isHidden = false
+        } else {
+            tableView.isHidden = false
+            addButton.isHidden = false
+            labelRef!.isHidden = true
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if itemList != nil {
+            if itemList?.count == 0 {
+                tableView.separatorStyle = .none
+            } else {
+                tableView.separatorStyle = .singleLine
+            }
             return itemList!.count
         }
+        
+        tableView.separatorStyle = .none
         return 0
     }
     
@@ -74,7 +111,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         cell.itemName.text = item.name
         cell.addedBy.text = "Added by: \(item.addedBy) "
-        
         
         cell.delegate = self
 

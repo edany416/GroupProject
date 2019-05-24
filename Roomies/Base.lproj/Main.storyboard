@@ -135,7 +135,7 @@
                                         <rect key="frame" x="50" y="154" width="275" height="42.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21I-TI-6io" customClass="RoundedButton" customModule="Roomies" customModuleProvider="target">
                                         <rect key="frame" x="50" y="246.5" width="275" height="50"/>
@@ -282,6 +282,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="TodoListIcon" id="0YO-Pg-hxh"/>
                     <connections>
+                        <outlet property="addButton" destination="bSm-Yy-lx9" id="8Jl-zf-UBd"/>
                         <outlet property="addItemView" destination="bSm-Yy-lx9" id="o1U-Fv-h0X"/>
                         <outlet property="tableView" destination="qMp-88-iWl" id="dRY-di-YvA"/>
                     </connections>
@@ -298,7 +299,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nzU-ha-rvx">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nzU-ha-rvx">
                                 <rect key="frame" x="0.0" y="64" width="375" height="496"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -306,7 +307,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RiM-oT-Dj5" id="J8s-E9-YPL">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSu-RD-coQ">
@@ -382,6 +383,7 @@
                     <tabBarItem key="tabBarItem" title="" image="ChatIcon" id="4uZ-86-hoB"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addButton" destination="pA5-FF-Pdm" id="qYs-dH-Dvk"/>
                         <outlet property="addMessageView" destination="pA5-FF-Pdm" id="Ldb-jU-Vqn"/>
                         <outlet property="tableView" destination="nzU-ha-rvx" id="Tk7-Tf-51g"/>
                     </connections>
@@ -794,8 +796,8 @@
         <image name="TodoListIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kzn-6P-uXE"/>
-        <segue reference="dGz-ud-cCM"/>
+        <segue reference="IjU-Y0-a5l"/>
+        <segue reference="lfP-D1-Ad2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

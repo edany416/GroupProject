@@ -12,7 +12,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var addMessageView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addButton: UIView!
     
+    private var label: UILabel?
     private var messageList: [MessageItem]?
     private var fullName = "\(FirebaseManager.instance.firstName) \(FirebaseManager.instance.lastName)"
     
@@ -44,6 +46,19 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         tableView.delegate = self
         
+        let x = self.view.bounds.midX
+        let y = self.view.bounds.midY
+        let width = 200
+        let height = 100
+        let rect = CGRect(x: 0, y: 0, width: width, height: height)
+        label = UILabel(frame: rect)
+        label!.numberOfLines = 0
+        label!.textAlignment = .center
+        //label.textColor = UIColor.lightText
+        label!.text = "Go to settings and create or join a house to get started"
+        label!.center = CGPoint(x: x, y: y)
+        self.view.addSubview(label!)
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addMessageViewTapped))
         addMessageView.addGestureRecognizer(tapGesture)
         
@@ -54,7 +69,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        updateLayout()
         if FirebaseManager.instance.userBelongsToHouse && !FirebaseManager.instance.isObservingChat {
             attachObserver()
         } else {
@@ -104,6 +119,18 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let secondTime = dateFormatter.date(from: that.timeSent) as! Date
         
         return firstTime < secondTime
+    }
+    
+    private func updateLayout() {
+        if !FirebaseManager.instance.userBelongsToHouse {
+            tableView.isHidden = true
+            addButton.isHidden = true
+            label!.isHidden = false
+        } else {
+            tableView.isHidden = false
+            addButton.isHidden = false
+            label!.isHidden = true
+        }
     }
     
     private func attachObserver() {
