@@ -51,7 +51,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         label.numberOfLines = 0
         label.textAlignment = .center
         //label.textColor = UIColor.lightText
-        label.text = "Go to settings and create or join a house to get started"
+        label.text = "Create or join a house to get started"
         label.center = CGPoint(x: x, y: y)
         self.view.addSubview(label)
         
