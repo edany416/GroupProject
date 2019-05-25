@@ -28,10 +28,20 @@
                                             <constraint firstAttribute="width" constant="250" id="d6i-EJ-Koi"/>
                                         </constraints>
                                     </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKV-fF-UUS" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                        <rect key="frame" x="62.666666666666657" y="370" width="249.99999999999997" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="8jS-qn-lrT"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.38039215686274508" green="0.16470588235294117" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="UKV-fF-UUS" firstAttribute="width" secondItem="PR9-dD-M3V" secondAttribute="width" id="5a3-aC-wkf"/>
                                     <constraint firstItem="PR9-dD-M3V" firstAttribute="centerY" secondItem="JBg-JY-l7j" secondAttribute="centerY" id="7T2-Up-CqW"/>
+                                    <constraint firstItem="UKV-fF-UUS" firstAttribute="top" secondItem="PR9-dD-M3V" secondAttribute="bottom" constant="-23" id="Cb3-t9-3IY"/>
+                                    <constraint firstItem="UKV-fF-UUS" firstAttribute="centerX" secondItem="PR9-dD-M3V" secondAttribute="centerX" id="Weu-WS-5BG"/>
                                     <constraint firstItem="PR9-dD-M3V" firstAttribute="centerX" secondItem="JBg-JY-l7j" secondAttribute="centerX" id="v79-gX-2wZ"/>
                                 </constraints>
                             </view>
@@ -90,6 +100,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="UKV-fF-UUS" id="qGB-74-p8J"/>
                         <outlet property="logInButton" destination="qAp-Pd-9jb" id="s1r-Ff-DPX"/>
                         <outlet property="signUpButton" destination="xIZ-Ci-9Bt" id="qhc-FY-cpH"/>
                         <segue destination="4pq-Eg-SUa" kind="presentation" identifier="SkipLoginSegue" id="kzn-6P-uXE"/>
@@ -778,8 +789,8 @@
         <image name="TodoListIcon" width="67.5" height="67.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IjU-Y0-a5l"/>
-        <segue reference="lfP-D1-Ad2"/>
+        <segue reference="kzn-6P-uXE"/>
+        <segue reference="dGz-ud-cCM"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
