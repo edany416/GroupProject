@@ -29,6 +29,7 @@ class SignUpViewController: UIViewController {
         continueButton.backgroundColor = UIColor.white
         
         loadingIndicatorView.type = .ballBeat
+        loadingIndicatorView.color = #colorLiteral(red: 0.3803921569, green: 0.1647058824, blue: 0.4235294118, alpha: 1)
         
         var textFieldProps = SFTextFieldProps()
         textFieldProps.lineColor = UIColor.white

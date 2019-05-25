@@ -12,20 +12,11 @@ import NVActivityIndicatorView
 
 class TestViewController: UIViewController {
 
-    @IBOutlet weak var aView: NVActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        aView.type = .ballSpinFadeLoader
+        
     }
-    
-    @IBAction func start(_ sender: Any) {
-        aView.startAnimating()
-    }
-    
-    @IBAction func stop(_ sender: Any) {
-        aView.stopAnimating()
-    }
-    
     
     @IBAction func logout(_ sender: Any) {
         FirebaseManager.instance.logOut()

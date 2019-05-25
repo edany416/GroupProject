@@ -7,25 +7,23 @@
 //
 
 import UIKit
+import BEMCheckBox
 
 protocol ItemCellDelegate {
     func didTapCheckBox(for cell: ItemCell)
 }
 
-class ItemCell: UITableViewCell {
+class ItemCell: UITableViewCell, BEMCheckBoxDelegate {
 
     @IBOutlet weak var itemName: UILabel!
     @IBOutlet weak var addedBy: UILabel!
-    @IBOutlet weak var checkBox: UIView!
+    @IBOutlet weak var checkBox: BEMCheckBox!
     
     var delegate: ItemCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(checkBoxTapped))
-        checkBox.addGestureRecognizer(gestureRecognizer)
-        
+        checkBox.delegate = self
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,10 +31,13 @@ class ItemCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    @objc private func checkBoxTapped() {
+    func animationDidStop(for checkBox: BEMCheckBox) {
         delegate?.didTapCheckBox(for: self)
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        checkBox.on = false
+    }
     
-
 }

@@ -26,6 +26,7 @@ class AddItemController: UIAlertController {
             (action : UIAlertAction!) -> Void in })
         
         alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.autocapitalizationType = UITextAutocapitalizationType.sentences
             textField.placeholder = "Enter Item Name"
         }
         
